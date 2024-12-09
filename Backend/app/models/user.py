@@ -11,5 +11,35 @@ class Patient :
         self.mutuel=mutuel
         self.tel_contact=tel_contact
         self.date_creation=date_creation
-    
+
+class Laborantin:
+    def __init__(self,id,nom,prenom):
+        self.id=id
+        self.nom=nom
+        self.prenom=prenom
+
+class admin:
+    def __init__(self,id,nom,prenom):
+        self.id = id
+        self.nom = nom
+        self.prenom = prenom
+
+class radiologue:
+    def __init__(self,id,nom,prenom):
+        self.id = id
+        self.nom = nom
+        self.prenom = prenom
+
+class medecin:
+    def __init__(self,id,nom,prenom,service):
+        self.id = id
+        self.nom = nom
+        self.prenom = prenom
+        self.service = service
+
+class infirmier:
+    def __init__(self,id,nom,prenom):
+        self.id = id
+        self.nom = nom
+        self.prenom = prenom
 
