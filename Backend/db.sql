@@ -7,6 +7,7 @@ CREATE TABLE `Consultation` (
   `antecedents` text
 );
 
+
 CREATE TABLE `Ordonnance` (
   `id_ordonnance` int PRIMARY KEY,
   `id_consultation` int,
