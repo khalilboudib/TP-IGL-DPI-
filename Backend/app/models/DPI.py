@@ -1,15 +1,17 @@
 class DPI:
-
-    Bilan_biologique = []
-    Compte_Rendus = []
-    Hospitalisations = []
-    Consultations = []
+    def __init__(self):
+        self.patient = None
+        self.id = None
+        self.Bilan_biologique = []
+        self.Compte_Rendus = []
+        self.Hospitalisations = []
+        self.Consultations = []
 
     def setId(self,id):
-        self.id=id
+        self.id = id
 
     def setPatient(self,patient):
-        self.patient=patient
+        self.patient = patient
 
     def addBilan_biologique(self,bilan):
         self.Bilan_biologique.append(bilan)

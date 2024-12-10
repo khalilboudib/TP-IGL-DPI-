@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fd12cfd5-3172-4b0c-912b-760d79a4c71b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Backend/app/models/Bilan_biologique.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/app/models/Compte_Rendu.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/app/models/DPI.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/app/models/DPI.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,20 +32,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "khalil",
-    "last_opened_file_path": "C:/Users/hp/Desktop/TP_IGL",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;khalil&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/hp/Desktop/TP_IGL&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="TP_IGL" type="Python.DjangoServer" factoryName="Django server">
       <module name="TP_IGL" />
@@ -85,7 +86,8 @@
       <workItem from="1733477545399" duration="4791000" />
       <workItem from="1733672445083" duration="1630000" />
       <workItem from="1733674252786" duration="3565000" />
-      <workItem from="1733759183624" duration="1668000" />
+      <workItem from="1733759183624" duration="4036000" />
+      <workItem from="1733859814578" duration="1898000" />
     </task>
     <servers />
   </component>
