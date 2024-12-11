@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `dpi` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `dpi`;
 CREATE TABLE `Consultation` (
   `id_consultation` int PRIMARY KEY,
   `numero_securite_sociale` varchar(15),
