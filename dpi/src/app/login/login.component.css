@@ -1,27 +1,23 @@
 .login-container {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   background: linear-gradient(270deg, rgba(238, 238, 236, 0) 0%, #E8E7E3 19.22%);
-  border-radius: 5px;
-  width: 60%;
+  border-radius: 2rem;
+  width: 90%;
   padding: 2em;
-  margin: 10% auto;
+  margin: 5% auto;
 }
 
-.login-content {
-  width: 50%;
+.login-content, .login-image {
+  width: 100%;
 }
 
 .login-image {
-  width: 50%;
   display: flex;
   justify-content: center;
-}
-
-.login-image img {
-  max-width: 100%;
-  border-radius: 5px;
+  border-radius: 5rem;
 }
 
 .login-container div {
@@ -42,7 +38,7 @@
 }
 
 .login-container button {
-  width: 5rem;
+  width: 100%;
   padding: 0.5em;
   background-color: hsla(222, 22%, 15%, 1);
   color: white;
@@ -56,4 +52,42 @@ h2 {
 .next {
   display: flex;
   justify-content: space-around;
+}
+
+@media (min-width: 768px) {
+  .login-container {
+    flex-direction: row;
+    width: 60%;
+    margin: 10% auto;
+  }
+
+  .login-content, .login-image {
+    width: 50%;
+  }
+
+  .login-container button {
+    width: 5rem;
+  }
+}
+
+.login-container button {
+  width: 100%;
+  padding: 0.5em;
+  background-color: hsla(222, 22%, 15%, 1);
+  color: white;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.login-container button:hover {
+  background-color: hsla(222, 22%, 25%, 1);
+  transform: scale(1.05);
+}
+
+@media (min-width: 768px) {
+  .login-container button {
+    width: 5rem;
+  }
 }
