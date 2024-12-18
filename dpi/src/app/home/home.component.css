@@ -1,4 +1,135 @@
+/* Styling for the main container */
 .home-container {
-    text-align: center;
-    margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  color: #fff;
+  font-family: 'Arial', sans-serif;
+  padding: 20px;
+}
+
+/* Hero section */
+.hero-section {
+  margin-bottom: 50px;
+}
+
+.hero-section h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.hero-section p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+.hero-section button {
+  position: relative;
+  margin-top: 10%;
+  padding: 12px 25px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #28a745, #218838);
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: all 0.3s ease, transform 0.2s ease;
+}
+
+.hero-section button:hover {
+  background: linear-gradient(135deg, #218838, #1e7e34);
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.hero-section button:active {
+  transform: scale(0.98);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Sparkling effect */
+.hero-section button::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.7), transparent 60%);
+  opacity: 0;
+  animation: sparkle 2s infinite ease-in-out;
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0.5);
   }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.5);
+    filter: blur(5px);
+  }
+}
+
+
+/* Not implemented text */
+.not-implemented {
+  font-size: 1.5rem;
+  margin-top: 20px;
+  opacity: 0.8;
+}
+
+.hero-section h1, .hero-section p {
+  animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero-section p {
+    font-size: 1rem;
+  }
+
+  .hero-section button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+
+  .hero-section p {
+    font-size: 0.9rem;
+  }
+
+  .hero-section button {
+    padding: 8px 18px;
+    font-size: 0.8rem;
+  }
+
+  .not-implemented {
+    font-size: 1.2rem;
+  }
+}
