@@ -13,6 +13,8 @@ import { FormsModule } from '@angular/forms';
 export class LoginComponent {
   username: string = '';
   password: string = '';
+  imageSrc: string = 'assets/doctor.jpg'; 
+
 
   constructor(private router: Router) {}
 
@@ -23,5 +25,9 @@ export class LoginComponent {
     } else {
       alert('Invalid credentials');
     }
+  }
+
+  onCancel(){
+    this.router.navigate(['/']);
   }
 }

@@ -1,14 +1,22 @@
 <div class="login-container">
-    <h2>Login</h2>
-    <form (ngSubmit)="onSubmit()">
-      <div>
-        <label for="username">Username:</label>
-        <input type="text" id="username" [(ngModel)]="username" name="username" required>
-      </div>
-      <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" [(ngModel)]="password" name="password" required>
-      </div>
-      <button type="submit">Login</button>
-    </form>
+    <div class="login-content">
+      <h2>Please Log in to continue:</h2>
+      <form (ngSubmit)="onSubmit()">
+        <div>
+          <label for="username">Username:</label>
+          <input type="text" id="username" [(ngModel)]="username" name="username" required>
+        </div>
+        <div>
+          <label for="password">Password:</label>
+          <input type="password" id="password" [(ngModel)]="password" name="password" required>
+        </div>
+        <div class="next">
+          <button type="button" (click)="onCancel()">Cancel</button>
+          <button type="submit" (click)="onSubmit()">Login</button>
+        </div>
+      </form>
+    </div>
+    <div class="login-image">
+        <img src="./../../assets/doctor.jpg" alt="Login Image">
+    </div>
   </div>
