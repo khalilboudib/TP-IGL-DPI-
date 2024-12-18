@@ -18,7 +18,7 @@ body {
   padding: 2em;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
-  margin-bottom: 20%;
+  padding-left: 5em;
 }
 
 .login-container:hover {
@@ -58,20 +58,34 @@ body {
   font-weight: bold;
   color: hsla(222, 15%, 20%, 1);
 }
-
 .login-container input {
   width: 100%;
-  padding: 0.8em;
+  padding: 0.5em;
   box-sizing: border-box;
-  border-radius: 20px;
-  border: solid 1px #ccc;
+  border: none; /* Remove border for cleaner look */
+  border-radius: 30px; /* Rounder edges */
+  background: linear-gradient(to right, #f0f0f0, #e0e0e0); /* Subtle gradient */
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1), inset -2px -2px 5px rgba(255, 255, 255, 0.8); /* Inner shadow for depth */
+  font-size: 1em;
+  color: #333;
   outline: none;
-  transition: border-color 0.3s, box-shadow 0.3s;
+  transition: all 0.3s ease-in-out;
 }
 
 .login-container input:focus {
-  border-color: hsla(222, 50%, 50%, 1);
-  box-shadow: 0 0 5px hsla(222, 50%, 60%, 1);
+  background: linear-gradient(to right, #ffffff, #f8f8f8); /* Lighten on focus */
+  box-shadow: inset 2px 2px 8px rgba(0, 0, 0, 0.15), inset -2px -2px 8px rgba(255, 255, 255, 0.9), 0 0 8px hsla(222, 50%, 70%, 0.5); /* Add glow */
+  transform: scale(1.02); /* Slight zoom on focus */
+}
+
+.login-container input::placeholder {
+  color: #aaa; /* Subtle placeholder color */
+  font-style: italic;
+  transition: color 0.3s ease-in-out;
+}
+
+.login-container input:focus::placeholder {
+  color: transparent; /* Hide placeholder when focused */
 }
 
 .login-container button {
