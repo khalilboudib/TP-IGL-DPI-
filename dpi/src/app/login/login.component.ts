@@ -19,7 +19,9 @@ export class LoginComponent {
   constructor(private router: Router) {}
 
   onSubmit() {
-    // Implement your authentication logic here
+    // Implement authentication logic 
+    // send cridentals to api
+    
     if (this.username === 'admin' && this.password === 'admin') {
       this.router.navigate(['/']);
     } else {
