@@ -4,16 +4,6 @@ from .khalil_models import SpecialiteMedicale
 #---------------------------------------------------------------------------------------------------------------
 # ACTORS
 
-class TypeUtilisateur(models.TextChoices):
-    ADMINISTRATIF = 'ADMINISTRATIF'
-    MEDECIN = 'MEDECIN'
-    INFIRMIER = 'INFIRMIER'
-    PHARMACIEN = 'PHARMACIEN'
-    LABORATOIRE = 'LABORATOIRE'
-    RADIOLOGUE = 'RADIOLOGUE'
-    PATIENT = 'PATIENT'
-    ADMINISTRATEUR = 'ADMINISTRATEUR'
-
 class Utilisateur(models.Model):
     id_utilisateur = models.AutoField(primary_key=True)
     nom = models.CharField(max_length=50)
