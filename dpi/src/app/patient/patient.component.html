@@ -17,10 +17,34 @@
     </ul>
   </div>
   
-  <div class="actions">
-    <div class="action" (click)="navigateTo('home')">Consultations<br><span class="stat">{{stat.consultations}}</span></div>
-    <div class="action" (click)="navigateTo('home')">Diagnostiques<br><span class="stat">{{stat.diagnostiques}}</span></div>
-    <div class="action" (click)="navigateTo('home')">Bilans Biologique<br><span class="stat">{{stat.bilansBiologique}}</span></div>
-    <div class="action" (click)="navigateTo('home')">Bilans Radio<br><span class="stat">{{stat.bilansRadio}}</span></div>
-    <div class="action" (click)="navigateTo('home')">Soins<br><span class="stat">{{stat.soins}}</span></div>
+  <div *ngIf="view === 'actions'" class="actions">
+    <div class="action" (click)="showDetails('consultations')">Consultations<br><span class="stat">{{stat.consultations}}</span></div>
+    <div class="action" (click)="showDetails('diagnostiques')">Diagnostiques<br><span class="stat">{{stat.diagnostiques}}</span></div>
+    <div class="action" (click)="showDetails('bilansBiologique')">Bilans Biologique<br><span class="stat">{{stat.bilansBiologique}}</span></div>
+    <div class="action" (click)="showDetails('bilansRadio')">Bilans Radio<br><span class="stat">{{stat.bilansRadio}}</span></div>
+    <div class="action" (click)="showDetails('soins')">Soins<br><span class="stat">{{stat.soins}}</span></div>
+  </div>
+  
+  <div *ngIf="view !== 'actions'" class="details">
+    <button class="back-button" (click)="showActions()">X</button>
+    <table *ngIf="view === 'consultations'">
+      <tr><th>Consultations</th></tr>
+      <!-- Add consultation details here -->
+    </table>
+    <table *ngIf="view === 'diagnostiques'">
+      <tr><th>Diagnostiques</th></tr>
+      <!-- Add diagnostique details here -->
+    </table>
+    <table *ngIf="view === 'bilansBiologique'">
+      <tr><th>Bilans Biologique</th></tr>
+      <!-- Add bilan biologique details here -->
+    </table>
+    <table *ngIf="view === 'bilansRadio'">
+      <tr><th>Bilans Radio</th></tr>
+      <!-- Add bilan radio details here -->
+    </table>
+    <table *ngIf="view === 'soins'">
+      <tr><th>Soins</th></tr>
+      <!-- Add soins details here -->
+    </table>
   </div>

@@ -173,3 +173,73 @@ body {
 .profile:hover::before {
   opacity: 1;
 }
+.details {
+  margin: 20px;
+}
+.back-button {
+  background: linear-gradient(145deg, #ff4b5c, #ff1c2f); /* Gradient from red to dark red */
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  cursor: pointer;
+  border-radius: 25px; /* Rounded corners */
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.back-button:hover {
+  background: linear-gradient(145deg, #ff1c2f, #ff4b5c); /* Reversed gradient on hover */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+  transform: translateY(-4px); /* Slight lift effect */
+}
+
+.back-button:active {
+  background: linear-gradient(145deg, #d12a38, #ff1c2f); /* Darker red on click */
+  transform: translateY(2px); /* Slight depression effect */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  border: 2px solid #218838; /* Green border around the entire table */
+  border-radius: 15px;
+  overflow: hidden; /* To make sure borders look clean */
+}
+
+th, td {
+  padding: 12px 20px;
+  text-align: left;
+  background: rgba(40, 167, 69, 0.1); /* Transparent green background */
+  border: 1px solid #ddd; /* Light border for individual cells */
+  border-radius: 12px; /* Rounded corners for cells */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+th {
+  background-color: #f2f2f2; /* Slightly gray for headers */
+  font-weight: bold;
+  text-align: center;
+}
+
+td {
+  color: #212529; /* Darker text */
+}
+
+tr:hover th, tr:hover td {
+  transform: scale(1.02);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+tr:nth-child(even) {
+  background: rgba(0, 0, 0, 0.05); /* Light alternating rows */
+}
+
+tr:hover {
+  background-color: rgba(40, 167, 69, 0.2); /* Green highlight on hover */
+}
+

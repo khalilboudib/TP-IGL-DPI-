@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms'; 
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-patient',
   templateUrl: './patient.component.html',
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   styleUrls: ['./patient.component.css']
 })
 export class PatientComponent {
+  view: string = 'actions';
   stat = {
     consultations: 5,
     diagnostiques: 3,
@@ -33,6 +35,13 @@ export class PatientComponent {
 
   navigateTo(page: string) {
     this.router.navigate([`/${page}`]);
+  }
+  showDetails(section: string) {
+    this.view = section;
+  }
+
+  showActions() {
+    this.view = 'actions';
   }
   
 }
