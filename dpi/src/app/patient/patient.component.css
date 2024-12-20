@@ -4,42 +4,6 @@ body {
   background-color: #f0fff4; /* Light green background */
 }
 
-.profile {
-  background-color: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-  margin: 5% auto;
-  padding: 25px 40px;
-  max-width: 700px;
-}
-
-.profile h2 {
-  text-align: center;
-  color: #28a745; /* Green title color */
-  margin-bottom: 25px;
-  font-size: 1.8rem;
-}
-
-.profile ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.profile li {
-  margin: 20px 0;
-  padding: 15px 20px;
-  background: #e9f8ec; /* Light green background for items */
-  border-left: 5px solid #28a745; /* Green accent line */
-  border-radius: 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.profile li strong {
-  color: #333;
-}
-
 .actions {
   display: flex;
   justify-content: center;
