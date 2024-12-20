@@ -9,7 +9,7 @@ class Utilisateur(models.Model):
     nom = models.CharField(max_length=50)
     prenom = models.CharField(max_length=50)
     email = models.EmailField(unique=True)
-    mot_de_passe = models.CharField(max_length=30, unique=True)
+    mot_de_passe = models.CharField(max_length=30)
     date_creation = models.DateTimeField()
     derniere_connexion = models.DateTimeField()
     telephone = models.CharField(max_length=20)
