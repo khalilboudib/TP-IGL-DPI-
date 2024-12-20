@@ -1,0 +1,24 @@
+
+<div class="profile">
+    <h2>Profile</h2>
+    <ul>
+      <li><strong>Numéro Sécurité Sociale:</strong> {{ patient.numero_securite_sociale }}</li>
+      <li><strong>Nom:</strong> {{ patient.nom }}</li>
+      <li><strong>Prénom:</strong> {{ patient.prenom }}</li>
+      <li><strong>Date de Naissance:</strong> {{ patient.date_naissance}}</li>
+      <li><strong>Adresse:</strong> {{ patient.adresse }}</li>
+      <li><strong>Téléphone:</strong> {{ patient.telephone }}</li>
+      <li><strong>Mutuelle:</strong> {{ patient.mutuelle }}</li>
+      <li><strong>Médecin Traitant:</strong> {{ patient.medecin_traitant }}</li>
+      <li><strong>Personne de Contact:</strong> {{ patient.personne_contact_nom }}</li>
+      <li><strong>Téléphone de Contact:</strong> {{ patient.personne_contact_telephone }}</li>
+    </ul>
+  </div>
+  
+  <div class="actions">
+    <div class="action" (click)="navigateTo('home')">Consultations<br><span class="stat">{{stat.consultations}}</span></div>
+    <div class="action" (click)="navigateTo('home')">Diagnostiques<br><span class="stat">{{stat.diagnostiques}}</span></div>
+    <div class="action" (click)="navigateTo('home')">Bilans Biologique<br><span class="stat">{{stat.bilansBiologique}}</span></div>
+    <div class="action" (click)="navigateTo('home')">Bilans Radio<br><span class="stat">{{stat.bilansRadio}}</span></div>
+    <div class="action" (click)="navigateTo('home')">Soins<br><span class="stat">{{stat.soins}}</span></div>
+  </div>

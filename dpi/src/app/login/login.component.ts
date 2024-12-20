@@ -23,7 +23,9 @@ export class LoginComponent {
     // send cridentals to api
     
     if (this.username === 'admin' && this.password === 'admin') {
-      this.router.navigate(['/']);
+      this.router.navigate(['/admin']);
+    } else if(this.username === 'patient' && this.password === 'patient'){ 
+      this.router.navigate(['/patient']);
     } else {
       alert('Invalid credentials');
     }
