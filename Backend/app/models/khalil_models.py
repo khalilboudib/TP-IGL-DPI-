@@ -168,11 +168,4 @@ class Hospitalisation(models.Model):
     etablissement_hospitalier = models.CharField(max_length=100)
     decompte_des_frais = models.OneToOneField(Decompte_des_frais, on_delete=models.SET_NULL, null=True)
 
-class Soin(models.Model):
-    id_soin = models.AutoField(primary_key=True)
-    date_soin = models.DateTimeField()
-    infirmier = models.OneToOneField("app.Infirmier", on_delete=models.SET_NULL, null=True)
-    description_soin = models.TextField()
-    observation_patient = models.TextField()
-    status = models.CharField(max_length=20)
 
