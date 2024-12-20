@@ -216,7 +216,6 @@ th, td {
   padding: 16px 24px; /* Larger padding for a more spacious feel */
   text-align: left;
   background: rgba(40, 167, 69, 0.1); /* Transparent green background */
-  border: 1px solid #ddd; /* Light border for individual cells */
   border-radius: 12px; /* Rounded corners for cells */
   font-size: 1.1rem; /* Slightly larger text */
   transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.4s ease;
