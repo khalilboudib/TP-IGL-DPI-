@@ -11,13 +11,36 @@ import { CommonModule } from '@angular/common';
 })
 export class PatientComponent {
   view: string = 'actions';
+  bilansBiologique = [
+    { title: 'Bilan Biologique 1', details: 'Details of Bilan Biologique 1' },
+    { title: 'Bilan Biologique 2', details: 'Details of Bilan Biologique 2' }
+  ];
+
+  bilansRadio = [
+    { title: 'Bilan Radio 1', details: 'Details of Bilan Radio 1' },
+    { title: 'Bilan Radio 2', details: 'Details of Bilan Radio 2' }
+  ];
+
+  soins = [
+    { title: 'Soin 1', details: 'Details of Soin 1' },
+    { title: 'Soin 2', details: 'Details of Soin 2' }
+  ];
+  consultations = [
+    { title: 'Consultation 1', details: 'Details of Consultation 1' },
+    { title: 'Consultation 2', details: 'Details of Consultation 2' }
+  ];
+
+  diagnostiques = [
+    { title: 'Diagnostique 1', details: 'Details of Diagnostique 1' },
+    { title: 'Diagnostique 2', details: 'Details of Diagnostique 2' }
+  ];
   stat = {
-    consultations: 5,
-    diagnostiques: 3,
-    bilansBiologique: 2,
-    bilansRadio: 1,
-    soins: 1 
-  }
+    consultations: this.consultations.length,
+    diagnostiques: this.diagnostiques.length,
+    bilansBiologique: this.bilansBiologique.length,
+    bilansRadio: this.bilansRadio.length,
+    soins: this.soins.length
+  };
   patient = {
     numero_securite_sociale: '123456789012345',
     nom: 'Doe',
@@ -42,6 +65,9 @@ export class PatientComponent {
 
   showActions() {
     this.view = 'actions';
+  }
+  viewDetails(item: any) {
+    alert(item.details);
   }
   
 }
