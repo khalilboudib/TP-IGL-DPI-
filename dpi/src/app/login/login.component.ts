@@ -21,7 +21,7 @@ export class LoginComponent {
   onSubmit() {
     // Implement authentication logic 
     // send cridentals to api
-    
+    // api will return object
     if (this.username === 'admin' && this.password === 'admin') {
       this.router.navigate(['/admin']);
     } else if(this.username === 'patient' && this.password === 'patient'){ 

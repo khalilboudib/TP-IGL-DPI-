@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms'; 
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-
 @Component({
   selector: 'app-patient',
   templateUrl: './patient.component.html',
@@ -55,7 +54,6 @@ export class PatientComponent {
 
   ngOnInit(): void {
     this.fetchPatients();
-    this.fetchPatientById(this.id);
   }
   navigateTo(page: string) {
     this.router.navigate([`/${page}`]);
