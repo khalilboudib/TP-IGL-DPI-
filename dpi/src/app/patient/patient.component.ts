@@ -2,15 +2,25 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms'; 
 import { CommonModule } from '@angular/common';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-patient',
   templateUrl: './patient.component.html',
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, HttpClientModule],
   styleUrls: ['./patient.component.css']
 })
 export class PatientComponent {
+
   view: string = 'actions';
+
+  
+  patient: any = null;
+  fetchedPatients: any[] = [];
+  id: string = '2';
+
+  constructor(private router: Router, private http: HttpClient) {}
+
   bilansBiologique = [
     { title: 'Bilan Biologique 1', details: 'Details of Bilan Biologique 1' },
     { title: 'Bilan Biologique 2', details: 'Details of Bilan Biologique 2' }
@@ -41,21 +51,12 @@ export class PatientComponent {
     bilansRadio: this.bilansRadio.length,
     soins: this.soins.length
   };
-  patient = {
-    numero_securite_sociale: '123456789012345',
-    nom: 'Doe',
-    prenom: 'John',
-    date_naissance: new Date('1990-01-01'),
-    adresse: '123 Main St, Anytown, USA',
-    telephone: '123-456-7890',
-    mutuelle: 'Mutuelle XYZ',
-    medecin_traitant: 'Dr. Smith',
-    personne_contact_nom: 'Jane Doe',
-    personne_contact_telephone: '098-765-4321'
-  };
 
-  constructor(private router: Router) {}
 
+  ngOnInit(): void {
+    this.fetchPatients();
+    this.fetchPatientById(this.id);
+  }
   navigateTo(page: string) {
     this.router.navigate([`/${page}`]);
   }
@@ -68,6 +69,34 @@ export class PatientComponent {
   }
   viewDetails(item: any) {
     alert(item.details);
+  }
+
+  //Mock API call to fetch patients
+  fetchPatients() {
+    const apiUrl = 'https://6766e47c560fbd14f18c6ca2.mockapi.io/patient';
+    this.http.get<any[]>(apiUrl).subscribe({
+      next: (data) => {
+        this.fetchedPatients = data;
+        console.log('Fetched Patients:', this.fetchedPatients);
+      },
+      error: (err) => {
+        console.error('Error fetching patients:', err);
+      }
+    });
+  }
+
+  //Mock API call to fetch a single patient by ID
+  fetchPatientById(id: string) {
+    const apiUrl = `https://6766e47c560fbd14f18c6ca2.mockapi.io/patient`;
+    this.http.get<any>(`${apiUrl}/${id}`).subscribe({
+      next: (data) => {
+        this.patient = data;
+        console.log('Fetched Patient:', data);
+      },
+      error: (err) => {
+        console.error('Error fetching patient:', err);
+      }
+    });
   }
   
 }
