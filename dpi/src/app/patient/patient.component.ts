@@ -53,7 +53,7 @@ export class PatientComponent {
 
 
   ngOnInit(): void {
-    this.fetchPatients();
+    this.fetchPatientById(this.id);
   }
   navigateTo(page: string) {
     this.router.navigate([`/${page}`]);
