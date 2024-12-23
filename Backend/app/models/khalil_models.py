@@ -95,7 +95,7 @@ class Consultation(models.Model):
 class Examen_Consultation(models.Model):
     id_examen_consultation = models.AutoField(primary_key=True)
     outils = models.CharField(max_length=20, choices=Outils.choices)
-    description = models.TextField()  
+    description = models.TextField()
     consultation = models.ForeignKey(Consultation, on_delete=models.SET_NULL, null=True, related_name="examens_consultations")
 
 class Bilan_Biologique(models.Model):
