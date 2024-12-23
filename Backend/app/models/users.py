@@ -1,46 +1,59 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 from .khalil_models import SpecialiteMedicale
+from datetime import datetime
 
 #---------------------------------------------------------------------------------------------------------------
 # ACTORS
 
-class Utilisateur(models.Model):
-    id_utilisateur = models.AutoField(primary_key=True)
+class Utilisateur(AbstractUser):
     nom = models.CharField(max_length=50)
     prenom = models.CharField(max_length=50)
     email = models.EmailField(unique=True)
     mot_de_passe = models.CharField(max_length=30)
-    date_creation = models.DateTimeField()
-    derniere_connexion = models.DateTimeField()
+    date_creation = models.DateTimeField(default=datetime.now)
+    date_naissance = models.DateTimeField()
     telephone = models.CharField(max_length=20)
+    adresse = models.CharField(max_length=100)
 
-class Medecin(Utilisateur):
-    numero_ordre = models.CharField(max_length=50, unique=True)
-    specialite = models.CharField(max_length=20, choices=SpecialiteMedicale.choices)
-    etablissement = models.CharField(max_length=100)
+    # the role
+    ROLE_CHOICES = (
+        ("admin", "Admin"),
+        ("patient", "Patient"),
+        ("medecin", "Medecin"),
+        ("infirmier", "Infirmier"),
+        ("radiologue", "Radiologue"),
+        ("laborantin", "Laborantin"),
+    )
+    role = models.CharField(max_length=15, choices=ROLE_CHOICES, default="patient")
+    
+    # to prevent conflicts
+    groups = models.ManyToManyField(
+        'auth.Group',
+        related_name='utilisateurs',
+        blank=True,
+        help_text='The groups this user belongs to.',
+        verbose_name='groups'
+    )
+    user_permissions = models.ManyToManyField(
+        'auth.Permission',
+        related_name='utilisateurs',
+        blank=True,
+        help_text='Specific permissions for this user.',
+        verbose_name='user permissions'
+    )
 
-class Infirmier(Utilisateur):
-    service = models.CharField(max_length=100)
+class Medecin(models.Model):
+    user = models.OneToOneField(Utilisateur, on_delete=models.SET_NULL, null=True)
 
-class Laboratoire(Utilisateur):
-    nom_etablissement = models.CharField(max_length=100)
-    specialisation = models.CharField(max_length=100)
+class Infirmier(models.Model):
+    user = models.OneToOneField(Utilisateur, on_delete=models.SET_NULL, null=True)
 
-class Radiologue(Utilisateur):
-    etablissement = models.CharField(max_length=100)
-    qualification = models.CharField(max_length=100)
+class Laboratoire(models.Model):
+    user = models.OneToOneField(Utilisateur, on_delete=models.SET_NULL, null=True)
 
-class admin(Utilisateur):
-    service = models.CharField(max_length=100)
+class Radiologue(models.Model):
+    user = models.OneToOneField(Utilisateur, on_delete=models.SET_NULL, null=True)
 
-class Patient(Utilisateur):
-    NSS = models.CharField(max_length=15, primary_key=True)
-    date_naissance = models.DateField()
-    adresse = models.CharField(max_length=200)
-    mutuelle = models.CharField(max_length=100)
-    medecin_traitant = models.ForeignKey(
-            Medecin,
-            on_delete=models.SET_NULL, null=True        
-        )
-    personne_contact_nom = models.CharField(max_length=100)
-    personne_contact_telephone = models.CharField(max_length=20)
+class admin(models.Model):   
+    user = models.OneToOneField(Utilisateur, on_delete=models.SET_NULL, null=True)
