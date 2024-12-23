@@ -16,13 +16,6 @@ class DPI(models.Model):
     id_dpi = models.AutoField(primary_key=True)
     date_creation = models.DateTimeField(default=datetime.now)
     
-    # relations with objects
-    diagnostic = models.ForeignKey(Diagnostic, on_delete=models.SET_NULL, null=True)
-    compte_Rendu = models.ForeignKey(Compte_Rendu, on_delete=models.SET_NULL, null=True)
-    certificatMedical = models.ForeignKey(CertificatMedical, on_delete=models.SET_NULL, null=True)
-    hospitalisation = models.ForeignKey(Hospitalisation, on_delete=models.SET_NULL, null=True)
-    soin = models.ForeignKey(Soin, on_delete=models.SET_NULL, null=True)
-    
     # relations with users
     patient = models.OneToOneField(Patient, on_delete=models.SET_NULL, null=True)
     
