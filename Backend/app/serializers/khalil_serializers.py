@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import *
+from app.models import *
 
 class UtilisateurSerializer(serializers.ModelSerializer):
     class Meta:
@@ -29,11 +29,6 @@ class RadiologueSerializer(serializers.ModelSerializer):
 class adminSerializer(serializers.ModelSerializer):
     class Meta:
         model = admin
-        fields = '__all__'
-
-class PatientSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Patient
         fields = '__all__'
 
 class MedicamentSerializer(serializers.ModelSerializer):

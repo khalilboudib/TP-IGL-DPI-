@@ -1,7 +1,7 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
-from app.serializers import UtilisateurSerializer, MedicamentSerializer
+from app.serializers.khalil_serializers import UtilisateurSerializer, MedicamentSerializer
 from app.models import Utilisateur
 from rest_framework import status
 from rest_framework.parsers import JSONParser
