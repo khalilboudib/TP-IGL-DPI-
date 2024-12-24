@@ -13,18 +13,18 @@ import { FormsModule } from '@angular/forms';
 export class LoginComponent {
   username: string = '';
   password: string = '';
-  imageSrc: string = 'assets/doctor.jpg'; 
+  imageSrc: string = 'assets/doctor.jpg';
 
 
   constructor(private router: Router) {}
 
   onSubmit() {
-    // Implement authentication logic 
+    // Implement authentication logic
     // send cridentals to api
     // api will return object
     if (this.username === 'admin' && this.password === 'admin') {
-      this.router.navigate(['/admin']);
-    } else if(this.username === 'patient' && this.password === 'patient'){ 
+      this.router.navigate(['/dashboard']);
+    } else if(this.username === 'patient' && this.password === 'patient'){
       this.router.navigate(['/patient']);
     } else {
       alert('Invalid credentials');

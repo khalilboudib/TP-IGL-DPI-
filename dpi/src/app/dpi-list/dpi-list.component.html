@@ -1,0 +1,31 @@
+<div class="dpi-list-container">
+  <h2> DPI List </h2>
+
+  <div class="action-buttons">
+    <button class="btn" (mouseover)="showSearchOptions = false" (click)="showSearchOptions = true">
+      Search DPI
+    </button>
+
+    <!-- Dropdown for search options -->
+    <div class="search-options" *ngIf="showSearchOptions">
+      <button class="search-option" (click)="searchByNSS()">Search by NSS</button>
+      <button class="search-option" (click)="searchByQRCode()">Search by QR Code</button>
+    </div>
+
+    <button class="btn" (click)="createNewDpi()">Create New DPI</button>
+  </div>
+
+  <ul class="dpi-list">
+    <li *ngFor="let dpi of dpis" (click)="viewDpiDetails(dpi.id_dpi)" class="dpi-item">
+      <div class="dpi-details">
+        <h3>ID: {{ dpi.id_dpi }}</h3>
+        <p>Date Created: {{ dpi.date_creation }}</p>
+        <p>{{ dpi.commentaire_medecin }}</p>
+        <img
+          [src]="dpi.chemin_QR_code"
+          alt="QR Code for DPI {{ dpi.id_dpi }}"
+          [ngStyle]="{ 'width': '100px', 'height': '100px', 'border': '2px solid black' }" />
+      </div>
+    </li>
+  </ul>
+</div>

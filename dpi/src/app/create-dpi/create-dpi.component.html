@@ -1,0 +1,21 @@
+<div class="create-dpi-container">
+  <h2>Create New DPI</h2>
+  <form>
+    <div class="form-group">
+      <label for="id_dpi">DPI ID</label>
+      <input id="id_dpi" type="text" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="diagnostic">Diagnostic</label>
+      <input id="diagnostic" type="text" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="comment">Administrative Comment</label>
+      <textarea id="comment" class="form-control"></textarea>
+    </div>
+
+    <button type="button" class="btn" (click)="createDpi()">Create</button>
+  </form>
+</div>
