@@ -6,6 +6,7 @@ export const routes: Routes = [
     { path: 'login', loadComponent: () => import('./login/login.component').then(m => m.LoginComponent) },
     { path: 'home', loadComponent: () => import('./home/home.component').then(m => m.HomeComponent) },
     { path: 'patient', loadComponent: () => import('./patient/patient.component').then(m => m.PatientComponent) },
+    { path: 'add-user', loadComponent: () => import('./add-user/add-user.component').then(m => m.AddUserComponent) },
     { path: '', redirectTo: '/home', pathMatch: 'full' }
   ];
 
