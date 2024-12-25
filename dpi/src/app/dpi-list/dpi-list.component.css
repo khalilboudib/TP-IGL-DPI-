@@ -1,17 +1,22 @@
 .dpi-list-container {
   max-width: 800px;
-  margin: 20px auto;
+  margin: 25px auto;
   padding: 20px;
-  border: 1px solid #ddd;
+  background-color: #fff;
   border-radius: 8px;
-  background-color: #f9f9f9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .action-buttons {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
-  position: relative;  /* Required to position the dropdown relative to the buttons */
+  align-items: flex-start;
+}
+
+.button-row {
+  display: flex;
+  gap: 15px; /* Adds space between the two buttons */
 }
 
 .btn {
@@ -19,9 +24,8 @@
   background-color: #007bff;
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 12px;
   cursor: pointer;
-  font-size: 14px;
   transition: background-color 0.3s;
 }
 
@@ -29,55 +33,198 @@
   background-color: #0056b3;
 }
 
-.search-options {
-  position: absolute;
-  top: 40px;  /* Position the dropdown below the button */
-  left: 0;
-  background-color: white;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-}
-
-.search-option {
-  padding: 10px;
-  background-color: #fff;
-  border: none;
-  cursor: pointer;
-  text-align: left;
-}
-
-.search-option:hover {
-  background-color: #f1f1f1;
-}
-
 .dpi-list {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
 }
 
 .dpi-item {
-  padding: 15px;
-  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
-  background-color: #fff;
-  cursor: pointer;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
   transition: background-color 0.3s;
 }
 
 .dpi-item:hover {
-  background-color: #f1f1f1;
+  background-color: #eef;
+}
+
+.dpi-details-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .dpi-details {
-  display: flex;
-  flex-direction: column;
+  flex: 1;
+  margin-right: 10px;
 }
 
-.dpi-details h3 {
+.dpi-qr-code img {
+  width: 100px;
+  height: 100px;
+  border: 2px solid black;
+  border-radius: 8px;
+}
+
+.dpi-qr-code {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.nss-input-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nss-input {
+  padding: 5px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.nss-input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Center the DPI List Title */
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Modal overlay with blur */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure modal is on top */
+  backdrop-filter: blur(5px); /* Apply blur effect outside the modal */
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 600px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.modal-header h3 {
   margin: 0;
-  color: #333;
+}
+
+.btn-close {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-close:hover {
+  background-color: #0056b3;
+}
+
+.modal-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-left {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.modal-right {
+  text-align: center;
+}
+
+.modal-right img {
+  width: 150px;
+  height: 150px;
+  border-radius: 8px;
+}
+
+/* Center the close button at the bottom of the modal */
+.modal-content .btn-close {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Search Bar Styles */
+.search-bar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 500px;
+  width: 100%;
+  background-color: #f9f9f9;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+}
+
+.search-icon {
+  margin-right: 8px;
+  color: #007bff;
+}
+
+.search-input {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  border-radius: 12px;
+  background-color: #f9f9f9;
+}
+
+.search-input::placeholder {
+  color: #888;
+}
+
+.search-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search-btn:hover {
+  background-color: #0056b3;
 }
