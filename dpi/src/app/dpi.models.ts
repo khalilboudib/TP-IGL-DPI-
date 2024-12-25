@@ -1,200 +1,185 @@
-export interface DPI {
-    id_dpi: number;
-    date_creation: string;
-    diagnostic?: Diagnostic;
-    compte_Rendu?: CompteRendu;
-    certificatMedical?: CertificatMedical;
-    hospitalisation?: Hospitalisation;
-    soin?: Soin;
-    patient?: Patient;
-    commentaire_administratif: string;
-    chemin_QR_code: string;
-  }
-  
-  export interface Diagnostic {
-    id_diagnostic: number;
-    diagnostic: string;
-    date_creation: string;
-    medecin?: Medecin;
-    consultations?: Consultation;
-    ordanance?: Ordonnance;
-    examen_Complementaire?: ExamenComplementaire;
-  }
-  
-  export interface CompteRendu {
-    id_compte_rendu: number;
-    date_creation: string;
-    radiologue?: Radiologue;
-    texte: string;
-    examen_Radiologique?: ExamenRadiologique;
-  }
-  
-  export interface CertificatMedical {
-    id_certificat: number;
-    medecin?: Medecin;
-    date_emission: string;
-    date_debut_validite: string;
-    date_fin_validite: string;
-    type_certificat: string;
-    duree_arret_travail: number;
-    recommandations: string;
-    etablissement: string;
-    signature_numerique: string;
-    chemin_fichier: string;
-  }
-  
-  export interface Hospitalisation {
-    id_hospitalisation: number;
-    date_entree: string;
-    date_sortie: string;
-    nbr_chamisation: number;
-    etablissement_hospitalier: string;
-    decompte_des_frais?: DecompteDesFrais;
-  }
-  
-  export interface Soin {
-    id_soin: number;
-    date_soin: string;
-    infirmier?: Infirmier;
-    description_soin: string;
-    observation_patient: string;
-    status: string;
-  }
-  
-  export interface Patient {
-    NSS: string;
-    nom: string;
-    prenom: string;
-    email: string;
-    mot_de_passe: string;
-    date_creation: string;
-    derniere_connexion: string;
-    telephone: string;
-    date_naissance: string;
-    adresse: string;
-    mutuelle: string;
-    medecin_traitant?: Medecin;
-    personne_contact_nom: string;
-    personne_contact_telephone: string;
-  }
-  
-  export interface Medicament {
-    id_medicament: number;
-    nom_medicament: string;
-    dose: string;
-    duree_traitement: string;
-  }
-  
-  export interface Ordonnance {
-    id_ordonnance: number;
-    date_creation: string;
-    validated: string;
-    medicaments?: Medicament;
-  }
-  
-  export interface ExamenConsultation {
-    id_examen_consultation: number;
-    outils: string;
-    description: string;
-  }
-  
-  export interface Resume {
-    id_resume: number;
-    text: string;
-    antecedents: any[];
-  }
-  
-  export interface Consultation {
-    id_consultation: number;
-    date_consultation: string;
-    resume_consultation?: Resume;
-    examen_consultation?: ExamenConsultation;
-  }
-  
-  export interface ResultatBiologique {
-    id_resultat: number;
-    parametre: string;
-    valeur: number;
-    unite: string;
-  }
-  
-  export interface BilanBiologique {
-    id_bilan_biologique: number;
-    date_bilan: string;
-    laboratoire?: Laboratoire;
-    resultats?: ResultatBiologique;
-  }
-  
-  export interface ExamenRadiologique {
-    id_examen: number;
-    resultat?: ImageMedicale;
-    date_examen: string;
-    Radiologue?: Radiologue;
-    TypeRadio: string;
-  }
-  
-  export interface BilanRadiologique {
-    id_bilan_radiologique: number;
-    date_bilan: string;
-    examens?: ExamenRadiologique;
-  }
-  
-  export interface ExamenComplementaire {
-    id_examen_complementaire: number;
-    description: string;
-    bilan_Biologique?: BilanBiologique;
-    bilan_Radiologique?: BilanRadiologique;
-  }
-  
-  export interface ImageMedicale {
-    id_image: number;
-    chemin_fichier: string;
-  }
-  
-  export interface Radiologue {
-    id_radiologue: number;
-    nom: string;
-    prenom: string;
-    email: string;
-    mot_de_passe: string;
-    telephone: string;
-  }
-  
-  export interface DecompteDesFrais {
-    id_decompte: number;
-    date_decompte: string;
-    montant_total: number;
-    montant_rembourse: number;
-    montant_a_payer: number;
-    admin?: Admin;
-  }
-  
-  export interface Admin {
-    id_admin: number;
-    service: string;
-  }
-  
-  export interface Medecin {
-    id_medecin: number;
-    nom: string;
-    prenom: string;
-    email: string;
-    mot_de_passe: string;
-    telephone: string;
-  }
-  
-  export interface Infirmier {
-    id_infirmier: number;
-    nom: string;
-    prenom: string;
-    email: string;
-    mot_de_passe: string;
-    telephone: string;
-  }
-  
-  export interface Laboratoire {
-    id_laboratoire: number;
-    nom: string;
-    adresse: string;
-    telephone: string;
-  }
+interface DPI {
+  id_dpi: number;
+  date_creation: Date; // Using Date object
+  NSS: string;
+  mutuelle: string;
+  contact_info: string;
+  chemin_QR_code: string;
+  diagnostic: Diagnostic | null;
+  compte_Rendu: CompteRendu | null;
+  certificatMedical: CertificatMedical | null;
+  hospitalisation: Hospitalisation | null;
+  user: Utilisateur | null;
+  medecin_traitant: Medecin[]; // Many-to-many relationship
+}
+
+interface Diagnostic {
+  id_diagnostic: number;
+  diagnostic: string;
+  date_creation: Date;
+  medecin: Medecin | null;
+  consultations: Consultation | null;
+  ordonnance: Ordonnance | null;
+  examen_Complementaire: ExamenComplementaire | null;
+}
+
+interface CompteRendu {
+  id_compte_rendu: number;
+  date_creation: Date;
+  radiologue: Radiologue | null;
+  texte: string;
+  examen_Radiologique: ExamenRadiologique | null;
+}
+
+interface CertificatMedical {
+  id_certificat: number;
+  medecin: Medecin | null;
+  date_emission: Date;
+  date_debut_validite: Date;
+  date_fin_validite: Date;
+  type_certificat: TypeCertificat;
+  duree_arret_travail: number;
+  recommandations: string;
+  etablissement: string;
+  signature_numerique: string;
+  chemin_fichier: string;
+}
+
+interface Hospitalisation {
+  id_hospitalisation: number;
+  date_entree: Date;
+  date_sortie: Date;
+  nbr_chamisation: number;
+  etablissement_hospitalier: string;
+  decompte_des_frais: DecompteDesFrais | null;
+}
+
+interface Soin {
+  id_soin: number;
+  date_soin: Date;
+  soin_infirmier: SoinInfirmierType;
+  observation_patient: string;
+  infirmier: Infirmier | null;
+  dpi: DPI | null;
+}
+
+interface Medicament {
+  id_medicament: number;
+  nom_medicament: string;
+  dose: string;
+  duree_traitement: string;
+}
+
+interface Ordonnance {
+  id_ordonnance: number;
+  date_creation: Date;
+  validated: StatutValidationOrdonnance;
+  medicaments: Medicament | null;
+}
+
+interface ExamenConsultation {
+  id_examen_consultation: number;
+  outils: Outils;
+  description: string;
+}
+
+interface Resume {
+  id_resume: number;
+  text: string;
+  antecedents: any[]; // Use appropriate type if known
+}
+
+interface Consultation {
+  id_consultation: number;
+  date_consultation: Date;
+  resume_consultation: Resume | null;
+  examen_consultation: ExamenConsultation | null;
+}
+
+interface ResultatBiologique {
+  id_resultat: number;
+  parametre: ParametreBiologique;
+  valeur: number;
+  unite: string;
+}
+
+interface BilanBiologique {
+  id_bilan_biologique: number;
+  date_bilan: Date;
+  laboratoire: Laboratoire | null;
+  resultats: ResultatBiologique | null;
+}
+
+interface ImageMedicale {
+  id_image: number;
+  chemin_fichier: string;
+}
+
+interface ExamenRadiologique {
+  id_examen: number;
+  resultat: ImageMedicale | null;
+  date_examen: Date;
+  radiologue: Radiologue | null;
+  TypeRadio: TypeRadio;
+}
+
+interface BilanRadiologique {
+  id_bilan_radiologique: number;
+  date_bilan: Date;
+  examens: ExamenRadiologique | null;
+}
+
+interface ExamenComplementaire {
+  id_examen_complementaire: number;
+  description: string;
+  bilan_Biologique: BilanBiologique | null;
+  bilan_Radiologique: BilanRadiologique | null;
+}
+
+interface DecompteDesFrais {
+  id_decompte: number;
+  date_decompte: Date;
+  montant_total: number;
+  montant_rembourse: number;
+  montant_a_payer: number;
+  admin: Admin | null;
+}
+
+interface Utilisateur {
+  email: string;
+  birth_date: Date | null;
+  phone: string;
+  adresse: string;
+  role: Role;
+  groups: string[];
+  user_permissions: string[];
+}
+
+interface Medecin {
+  user: Utilisateur | null;
+}
+
+interface Infirmier {
+  user: Utilisateur | null;
+}
+
+interface Laboratoire {
+  user: Utilisateur | null;
+}
+
+interface Radiologue {
+  user: Utilisateur | null;
+}
+
+interface Admin {
+  user: Utilisateur | null;
+}
+
+// Enumerations
+type SoinInfirmierType = 'i' | 'p' | 's' | 'f';
+type StatutValidationOrdonnance = 'EN_ATTENTE' | 'VALIDEE' | 'REJETEE';
+type Outils = 'STETHOSCOPE' | 'OTOSCOPE' | 'THERMOMETRE' | 'OXYMETRE' | 'AUTRES';
+type ParametreBiologique = 'HEMOGLOBINE' | 'GLYCEMIE' | 'CHOLESTEROL' | 'TRIGLYCERIDES' | 'ACIDE_URIQUE' | 'CREATININE' | 'UREE' | 'TSH' | 'T4' | 'T3' | 'PSA' | 'CRP' | 'FERRITINE';
+type TypeRadio = 'IRM' | 'ECHOGRAPHIE' | 'RADIOGRAPHIE' | 'SCANNER' | 'AUTRES';
+type TypeCertificat = 'ARRET_TRAVAIL' | 'APTITUDE' | 'INCAPACITE_TEMPORAIRE' | 'INAPTITUDE' | 'SUIVI_MEDICAL' | 'AUTRE';
+type Role = 'admin' | 'patient' | 'medecin' | 'infirmier' | 'radiologue' | 'laborantin';
