@@ -66,17 +66,19 @@ class Medicament(models.Model):
     nom_medicament = models.CharField(max_length=100)
     dose = models.CharField(max_length=50)
     duree_traitement = models.CharField(max_length=50)
+    ordannance = models.ForeignKey("app.Ordonnance", on_delete=models.SET_NULL, null=True, related_name="medicaments")
 
 class Ordonnance(models.Model):
     id_ordonnance = models.AutoField(primary_key=True)
     date_creation = models.DateField(default=datetime.now)
     validated = models.TextField(choices=StatutValidationOrdonnance.choices)
-    medicaments = models.ForeignKey(Medicament, on_delete=models.SET_NULL, null=True)
+    diagnostic = models.OneToOneField("app.Diagnostic", on_delete=models.SET_NULL, null=True, related_name="ordonnance")
 
 class Resume(models.Model):
     id_resume = models.AutoField(primary_key=True)
     text = models.TextField()
     antecedents = models.JSONField(default=list)
+    consultation = models.OneToOneField("app.Consultation", on_delete=models.SET_NULL, null=True, related_name="resume")
 
 class Diagnostic(models.Model):
     id_diagnostic = models.AutoField(primary_key=True)
@@ -84,13 +86,11 @@ class Diagnostic(models.Model):
     diagnostic = models.TextField()
     date_creation = models.DateTimeField(default=datetime.now)
     #medecin = models.OneToOneField("app.Medecin", on_delete=models.SET_NULL, null=True)
-    ordanance = models.OneToOneField(Ordonnance, on_delete=models.SET_NULL, null=True)
 
 class Consultation(models.Model):
     id_consultation = models.AutoField(primary_key=True)
     diagnostic = models.ForeignKey(Diagnostic, on_delete=models.SET_NULL, null=True, related_name="consultations")
-    date_consultation = models.DateTimeField()
-    resume_consultation = models.OneToOneField(Resume, on_delete=models.SET_NULL, null=True)
+    date_consultation = models.DateTimeField(default=datetime.now)
 
 class Examen_Consultation(models.Model):
     id_examen_consultation = models.AutoField(primary_key=True)
@@ -101,7 +101,8 @@ class Examen_Consultation(models.Model):
 class Bilan_Biologique(models.Model):
     id_bilan_biologique = models.AutoField(primary_key=True)
     date_bilan = models.DateTimeField(default=datetime.now)
-    laboratoire = models.OneToOneField("app.Laboratoire", on_delete=models.SET_NULL, null=True)
+    examen_complementaire = models.OneToOneField("app.Examen_Complementaire", on_delete=models.SET_NULL, null=True, related_name="bilan_biologique")
+    #laboratoire = models.OneToOneField("app.Laboratoire", on_delete=models.SET_NULL, null=True)
 
 class Resultat_Biologique(models.Model):
     id_resultat = models.AutoField(primary_key=True)
@@ -117,12 +118,13 @@ class ImageMedicale(models.Model):
 class Bilan_Radiologique(models.Model):
     id_bilan_radiologique = models.AutoField(primary_key=True)
     date_bilan = models.DateTimeField(default=datetime.now)
+    examen_complementaire = models.OneToOneField("app.Examen_Complementaire", on_delete=models.SET_NULL, null=True, related_name="bilan_radiologique")
 
 class Examen_Radiologique(models.Model):
     id_examen = models.AutoField(primary_key=True)
     resultat = models.OneToOneField(ImageMedicale, on_delete=models.SET_NULL, null=True)
     date_examen = models.DateField()
-    Radiologue = models.OneToOneField("app.Radiologue", on_delete=models.SET_NULL, null=True)
+    #Radiologue = models.OneToOneField("app.Radiologue", on_delete=models.SET_NULL, null=True)
     TypeRadio = models.TextField(choices=TypeRadio.choices)
     bilan_radiologique = models.ForeignKey(Bilan_Radiologique, on_delete=models.SET_NULL, null=True, related_name="examen_radiologiques")
 
@@ -130,8 +132,6 @@ class Examen_Complementaire(models.Model):
     id_examen_complementaire = models.AutoField(primary_key=True)
     diagnostic = models.ForeignKey(Diagnostic, on_delete=models.SET_NULL, null=True, related_name="examen_Complementaires")
     description = models.TextField()
-    bilan_Biologique = models.OneToOneField(Bilan_Biologique, on_delete=models.SET_NULL, null=True)
-    bilan_Radiologique = models.OneToOneField(Bilan_Radiologique, on_delete=models.SET_NULL, null=True)
     
 class Compte_Rendu(models.Model):
     id_compte_rendu = models.AutoField(primary_key=True)

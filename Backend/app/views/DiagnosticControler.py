@@ -1,53 +1,39 @@
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from app.serializers.khalil_serializers import DiagnosticSerializer, OrdonnanceSerializer, Examen_ComplementaireSerializer
-from app.models import Diagnostic
+from app.serializers.khalil_serializers import DiagnosticSerializer, OrdonnanceSerializer, Examen_ComplementaireSerializer, MedicamentSerializer
+from app.models import Diagnostic, Ordonnance, Examen_Complementaire, Medicament
 from app.models import dpi
+from rest_framework.generics import ListAPIView
+from rest_framework.exceptions import ValidationError
 
 
 
 @api_view(['POST'])
 def crea_Diagnostic(request):
-    #request must have the id of the current dpi and the diagnostic attributes
-    # dpi_id = request.data['id_dpi']
-    # if not dpi_id:
-    #     return Response("id_dpi is required", status=400)
-    
-    # try:
-    #     dpii = dpi.objects.get(id_dpi=dpi_id)
-    # except dpii.DoesNotExist:
-    #     return Response(f"dpi with id {dpi_id} does not exist", status=404)
-    
+    #request must have all diagnostic attributes except diagnostic text field and ordananace and consultations
+
     diagnostic = request.data
-    #diagnostic['dpi'] = dpii
     serializer = DiagnosticSerializer(data=diagnostic)
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data, status=201)
     return Response(serializer.errors, status=400)
 
+class DiagnosticListView(ListAPIView):
+    serializer_class = DiagnosticSerializer
+    def post(self, request, *args, **kwargs):
+        id_dpi = request.data.get('id_dpi')
+        if not id_dpi:
+            raise ValidationError({"error": "dpi_id is required"})
+        
+        diagnostics = Diagnostic.objects.filter(dpi=id_dpi)
+        if not diagnostics.exists():
+            return Response({"message": "No diagnostics found for the given dpi_id"}, status=404)
 
+        serializer = self.get_serializer(diagnostics, many=True)
+        return Response(serializer.data)
 
-@api_view(['POST'])
-def ajout_ordanance(request):
-    #request must have the id of the current diagnostic and the ordanance attributes
-    # diagnostic_id = request.data['id_diagnostic']
-    # if not diagnostic_id:
-    #     return Response("id_diagnostic is required", status=400)
-    
-    # try:
-    #     diagnostic = Diagnostic.objects.get(id_diagnostic=diagnostic_id)
-    # except Diagnostic.DoesNotExist:
-    #     return Response(f"Diagnostic with id {diagnostic_id} does not exist", status=404)
-    
-    ordanance = request.data
-    #ordanance['diagnostic'] = diagnostic
-    serializer = OrdonnanceSerializer(data=ordanance)
-    if serializer.is_valid():
-        serializer.save()
-        return Response(serializer.data, status=201)
-    return Response(serializer.errors, status=400)
 
 @api_view(['POST'])
 def ajout_diagnostic(request):
@@ -62,29 +48,10 @@ def ajout_diagnostic(request):
         return Response(f"Diagnostic with id {diagnostic_id} does not exist", status=404)
     
     diagnostic_text = request.data['diagnostic']
-    diagnostic['diagnostic'] = diagnostic_text
+    diagnostic.diagnostic = diagnostic_text
     serializer = DiagnosticSerializer(data=diagnostic)
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data, status=201)
     return Response(serializer.errors, status=400)
 
-@api_view(['POST'])
-def ajout_ExamenComplementaire(request):
-    #request must have the id of the current diagnostic and the examen complementaire attributes
-    diagnostic_id = request.data['id_diagnostic']
-    if not diagnostic_id:
-        return Response("id_diagnostic is required", status=400)
-    
-    try:
-        diagnostic = Diagnostic.objects.get(id_diagnostic=diagnostic_id)
-    except Diagnostic.DoesNotExist:
-        return Response(f"Diagnostic with id {diagnostic_id} does not exist", status=404)
-    
-    examen_complementaire = request.data
-    examen_complementaire['diagnostic'] = diagnostic
-    serializer = Examen_ComplementaireSerializer(data=examen_complementaire)
-    if serializer.is_valid():
-        serializer.save()
-        return Response(serializer.data, status=201)
-    return Response(serializer.errors, status=400)
