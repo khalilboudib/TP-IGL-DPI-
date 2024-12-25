@@ -1,2 +1,23 @@
+# login
 curl -X POST -i "http://127.0.0.1:8000/app/login/" -d '{"email":"ma_bendaoud@esi.dz", "password":"bnd"}' -H "Content-Type: application/json"
+# add user
 curl -X POST -i "http://127.0.0.1:8000/app/users/add" -H "Authorization: Bearer $TOKEN" -d '{"first_name":"patient","last_name":"patient","email":"patient@gmail.com","password":"bndbndbnd","password2":"bndbndbnd","phone":"bnd","adresse":"bnd","role":"patient"}' -H "Content-Type: application/json"
+# add dpi
+curl -X POST -i "http://127.0.0.1:8000/app/dpi/add/" \
+-H "Authorization: Bearer $TOKEN" \
+-H "Content-Type: application/json" \
+-d '{
+    "first_name": "patient",
+    "last_name": "patient",
+    "email": "patient22@gmail.com",
+    "password": "bndbndbnd",
+    "password2": "bndbndbnd",
+    "phone": "bnd",
+    "adresse": "bnd",
+    "role": "patient",
+    "dpi_input": {
+        "nss": "123456789",
+        "mutuelle": "HealthCare",
+        "contact_info": "contact@example.com"
+    }
+}'
