@@ -1,7 +1,7 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
-from app.serializers import UtilisateurSerializer, MedicamentSerializer
+from app.serializers.khalil_serializers import UtilisateurSerializer, MedicamentSerializer, DPISerializer
 from app.models import Utilisateur
 from rest_framework import status
 from rest_framework.parsers import JSONParser
@@ -72,12 +72,15 @@ def token_test(request):
 @api_view(['POST'])
 def index_POST(request):
     if request.method == 'POST':
-        medicament_data = JSONParser().parse(request)
-        medicament_serializer = MedicamentSerializer(data=medicament_data)
+        #medicament_data = JSONParser().parse(request)
+        medicament_data = request.data
+        medicament_serializer = DPISerializer(data=medicament_data)
         if medicament_serializer.is_valid():
             medicament_serializer.save()
-            return JsonResponse(medicament_serializer.data, status=201)
-        return JsonResponse(medicament_serializer.errors, status=400)
+            return Response(medicament_serializer.data, status=201)
+        return Response(medicament_serializer.errors, status=400)
+
+    
     
 @api_view(['GET'])
 def index_GET(request):

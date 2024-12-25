@@ -83,7 +83,7 @@ class Diagnostic(models.Model):
     dpi = models.ForeignKey("app.dpi", on_delete=models.SET_NULL, null=True, related_name="diagnostics")
     diagnostic = models.TextField()
     date_creation = models.DateTimeField(default=datetime.now)
-    medecin = models.OneToOneField("app.Medecin", on_delete=models.SET_NULL, null=True)
+    #medecin = models.OneToOneField("app.Medecin", on_delete=models.SET_NULL, null=True)
     ordanance = models.OneToOneField(Ordonnance, on_delete=models.SET_NULL, null=True)
 
 class Consultation(models.Model):
