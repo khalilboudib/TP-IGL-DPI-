@@ -1,6 +1,6 @@
 interface DPI {
   id_dpi: number;
-  date_creation: Date; // Using Date object
+  date_creation: Date;
   NSS: string;
   mutuelle: string;
   contact_info: string;
@@ -10,7 +10,7 @@ interface DPI {
   certificatMedical: CertificatMedical | null;
   hospitalisation: Hospitalisation | null;
   user: Utilisateur | null;
-  medecin_traitant: Medecin[]; // Many-to-many relationship
+  medecin_traitant: Medecin | null; 
 }
 
 interface Diagnostic {
@@ -37,7 +37,7 @@ interface CertificatMedical {
   date_emission: Date;
   date_debut_validite: Date;
   date_fin_validite: Date;
-  type_certificat: TypeCertificat;
+  type_certificat: TypeCertificat | null;
   duree_arret_travail: number;
   recommandations: string;
   etablissement: string;
@@ -57,7 +57,7 @@ interface Hospitalisation {
 interface Soin {
   id_soin: number;
   date_soin: Date;
-  soin_infirmier: SoinInfirmierType;
+  soin_infirmier: SoinInfirmierType | null;
   observation_patient: string;
   infirmier: Infirmier | null;
   dpi: DPI | null;
@@ -73,7 +73,7 @@ interface Medicament {
 interface Ordonnance {
   id_ordonnance: number;
   date_creation: Date;
-  validated: StatutValidationOrdonnance;
+  validated: StatutValidationOrdonnance | null;
   medicaments: Medicament | null;
 }
 
@@ -86,7 +86,7 @@ interface ExamenConsultation {
 interface Resume {
   id_resume: number;
   text: string;
-  antecedents: any[]; // Use appropriate type if known
+  antecedents: any[];
 }
 
 interface Consultation {
@@ -98,7 +98,7 @@ interface Consultation {
 
 interface ResultatBiologique {
   id_resultat: number;
-  parametre: ParametreBiologique;
+  parametre: ParametreBiologique | null;
   valeur: number;
   unite: string;
 }
@@ -120,7 +120,7 @@ interface ExamenRadiologique {
   resultat: ImageMedicale | null;
   date_examen: Date;
   radiologue: Radiologue | null;
-  TypeRadio: TypeRadio;
+  TypeRadio: TypeRadio | null;
 }
 
 interface BilanRadiologique {

@@ -32,6 +32,11 @@ export class DataService {
     return this.getData(`dpi/${id}`);
   }
 
+  getDPIs(): Observable<DPI[]> {
+    return this.getData('dpi');
+  }
+
+
   addDPI(dpi: DPI): Observable<DPI> {
     return this.addData('dpi', dpi);
   }
