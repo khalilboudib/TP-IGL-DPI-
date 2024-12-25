@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { DpiService } from '../dpi.service'; // Import DPI service
 
 interface Patient {
   NSS: string;
@@ -36,10 +37,13 @@ export class DpiListComponent implements OnInit {
 
   id: string = '1';
 
-  constructor(private router: Router, private http: HttpClient) {}
+  constructor(private router: Router, private http: HttpClient, private dpiService: DpiService) { }
 
   ngOnInit(): void {
     this.fetchDpis();
+    this.dpiService.getDpis().subscribe((data) => {
+      this.dpis = data;
+    });
     //this.fetchPatientById(this.id);
   }
 
@@ -76,7 +80,7 @@ export class DpiListComponent implements OnInit {
   }
 
   createNewDpi(): void {
-    alert('Navigate to Create DPI page.');
+    this.router.navigate(['/create-dpi']);
   }
 
   // Fetch DPIs from MockAPI
