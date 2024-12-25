@@ -69,20 +69,6 @@ export class PatientComponent {
     alert(item.details);
   }
 
-  //Mock API call to fetch patients
-  fetchPatients() {
-    const apiUrl = 'https://6766e47c560fbd14f18c6ca2.mockapi.io/patient';
-    this.http.get<any[]>(apiUrl).subscribe({
-      next: (data) => {
-        this.fetchedPatients = data;
-        console.log('Fetched Patients:', this.fetchedPatients);
-      },
-      error: (err) => {
-        console.error('Error fetching patients:', err);
-      }
-    });
-  }
-
   //Mock API call to fetch a single patient by ID
   fetchPatientById(id: string) {
     const apiUrl = `https://6766e47c560fbd14f18c6ca2.mockapi.io/patient`;
