@@ -1,9 +1,9 @@
 from rest_framework import generics
-from app.serializers.users import RegisterSerializer
+from app.serializers.dpi import AddDPISerializer
 from app.models import Utilisateur
 from app.permissions import isAdmin
 
-class RegisterView(generics.CreateAPIView):
+class AddDPIView(generics.CreateAPIView):
     #permission_classes = [isAdmin]
     queryset = Utilisateur.objects.all()
-    serializer_class = RegisterSerializer
+    serializer_class = AddDPISerializer
