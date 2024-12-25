@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import {FormsModule} from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 interface Patient {
   NSS: string;
@@ -10,7 +11,7 @@ interface Patient {
 }
 
 interface DPI {
-  id_dpi: number;
+  id_dpi: string;
   date_creation: string;
   commentaire_administratif: string;
   chemin_QR_code: string;
@@ -33,55 +34,13 @@ export class DpiListComponent implements OnInit {
   showModal: boolean = false;
   nssInput: string = ''; // Bind to the input field for NSS
 
-  constructor(private router: Router) {}
+  id: string = '1';
+
+  constructor(private router: Router, private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.dpis = [
-      {
-        id_dpi: 1,
-        date_creation: '2024-01-01',
-        commentaire_administratif: 'Admin Comment 1',
-        chemin_QR_code: '/assets/qrcodes/dpi1.png',
-        patient: {
-          NSS: '123456789',
-          nom: 'John',
-          prenom: 'Doe',
-        },
-      },
-      {
-        id_dpi: 2,
-        date_creation: '2024-01-02',
-        commentaire_administratif: 'Admin Comment 2',
-        chemin_QR_code: '/assets/qrcodes/dpi2.png',
-        patient: {
-          NSS: '987654321',
-          nom: 'Jane',
-          prenom: 'Smith',
-        },
-      },
-      {
-        id_dpi: 3,
-        date_creation: '2024-01-01',
-        commentaire_administratif: 'Admin Comment 3',
-        chemin_QR_code: '/assets/qrcodes/dpi1.png',
-        patient: {
-          NSS: '123456789',
-          nom: 'John',
-          prenom: 'Doe',
-        },
-      },
-      {
-        id_dpi: 4,
-        date_creation: '2024-01-02',
-        commentaire_administratif: 'Admin Comment 4',
-        chemin_QR_code: '/assets/qrcodes/dpi2.png',
-        patient: {
-          NSS: '987654321',
-          nom: 'Jane',
-          prenom: 'Smith',
-        },
-      },
-    ];
+    this.fetchDpis();
+    //this.fetchPatientById(this.id);
   }
 
   searchByNSS(nss: string): void {
@@ -112,11 +71,26 @@ export class DpiListComponent implements OnInit {
     this.showSearchOptions = false;
   }
 
-  viewDpiDetails(dpiId: number): void {
+  viewDpiDetails(dpiId: string): void {
     console.log('Navigate to DPI:', dpiId);
   }
 
   createNewDpi(): void {
     alert('Navigate to Create DPI page.');
   }
+
+  // Fetch DPIs from MockAPI
+  fetchDpis(): void {
+    const apiUrl = 'https://676bfd0dbc36a202bb865e74.mockapi.io/api/dpi-list/DPI'; // Replace with your API URL
+    this.http.get<DPI[]>(apiUrl).subscribe({
+      next: (data) => {
+        this.dpis = data;
+        console.log('Fetched DPIs:', this.dpis);
+      },
+      error: (err) => {
+        console.error('Error fetching DPIs:', err);
+      }
+    });
+  }
+
 }
