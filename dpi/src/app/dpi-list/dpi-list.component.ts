@@ -76,7 +76,13 @@ export class DpiListComponent implements OnInit {
   }
 
   viewDpiDetails(dpiId: string): void {
-    console.log('Navigate to DPI:', dpiId);
+    const dpi = this.dpis.find((dpi) => dpi.id_dpi === dpiId);
+    if (dpi) {
+      this.selectedDpi = dpi;
+      this.showModal = true; // Show the modal
+    } else {
+      alert('No DPI found with this NSS');
+    }
   }
 
   createNewDpi(): void {

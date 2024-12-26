@@ -61,7 +61,7 @@ export class CreateDpiComponent {
     // Call service to save DPI
     this.dpiService.addDpi(newDpi).subscribe((dpi) => {
       // After saving, navigate to the DPI list page
-      this.router.navigate(['/']);
+      this.router.navigate(['/dpi-list']);
     });
   }
 }
