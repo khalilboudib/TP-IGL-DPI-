@@ -1,0 +1,64 @@
+# -------------------- login -----------------
+POST http://127.0.0.1:8000/app/login/
+Content-Type: application/json
+
+{
+    "email":"infirmier@gmail.com",
+    "password":"bndbndbnd"
+
+}
+
+###
+# -------------------- create soin -----------------
+POST http://127.0.0.1:8000/app/soins/add/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1MjI1ODY2LCJpYXQiOjE3MzUyMjU1NjYsImp0aSI6ImEyMThhYTA0OTFmODQ1MmU5OTQwYjA0ZWFlNzQyMzNjIiwidXNlcl9pZCI6MTQsInJvbGUiOiJpbmZpcm1pZXIifQ.hPviYGbsYVww2gthemzBEOEi_G8LXu_2lTalBe_DWFs
+Content-Type: application/json
+
+{
+  "soin_infirmier":"i",
+  "observation_patient":"this is observation",
+  "infirmier":1,
+  "dpi":7,
+  "admin_medicament_input":{
+    "advice":"this is advice how to take medicament"
+  }
+}
+
+###
+# -------------------- create dpi -----------------
+POST http://127.0.0.1:8000/app/dpi/add/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1MjI1ODY2LCJpYXQiOjE3MzUyMjU1NjYsImp0aSI6ImEyMThhYTA0OTFmODQ1MmU5OTQwYjA0ZWFlNzQyMzNjIiwidXNlcl9pZCI6MTQsInJvbGUiOiJpbmZpcm1pZXIifQ.hPviYGbsYVww2gthemzBEOEi_G8LXu_2lTalBe_DWFs
+Content-Type: application/json
+
+{
+    "first_name": "patient",
+    "last_name": "patient",
+    "email": "patient23@gmail.com",
+    "password": "bndbndbnd",
+    "password2": "bndbndbnd",
+    "phone": "bnd",
+    "adresse": "bnd",
+    "role": "patient",
+    "dpi_input": {
+        "nss": "1289",
+        "mutuelle": "HealthCare",
+        "contact_info": "contact@example.com"
+    }
+}
+
+###
+# ---------------- register new user (not dpi) -----
+POST http://127.0.0.1:8000/app/users/add/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1MjI1ODY2LCJpYXQiOjE3MzUyMjU1NjYsImp0aSI6ImEyMThhYTA0OTFmODQ1MmU5OTQwYjA0ZWFlNzQyMzNjIiwidXNlcl9pZCI6MTQsInJvbGUiOiJpbmZpcm1pZXIifQ.hPviYGbsYVww2gthemzBEOEi_G8LXu_2lTalBe_DWFs
+Content-Type: application/json
+
+{
+    "first_name":"patient",
+    "last_name":"patient",
+    "email":"patient@gmail.com",
+    "password":"bndbndbnd",
+    "password2":"bndbndbnd",
+    "phone":"bnd",
+    "adresse":"bnd",
+    "role":"patient"
+}

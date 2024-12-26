@@ -5,6 +5,7 @@ from app.views.login import CustomTokenObtainPairView
 from app.views.admin import AdminView
 from app.views.register import RegisterView
 from app.views.dpi import AddDPIView
+from app.views.soins import AddSoinView
 
 urlpatterns = [
     path('POST/', authentication.index_POST, name='index_POST'),
@@ -12,6 +13,7 @@ urlpatterns = [
     path('login/', CustomTokenObtainPairView.as_view(), name='login'),
     path('SignUp/', authentication.SignUp, name='SignUp'),
     path('token_test/', authentication.token_test, name='token_test'),
-    path('users/add', RegisterView.as_view(), name="register_view"),
-    path('dpi/add/', AddDPIView.as_view(), name="add_dpi_view")
+    path('users/add/', RegisterView.as_view(), name="register_view"),
+    path('dpi/add/', AddDPIView.as_view(), name="add_dpi_view"),
+    path('soins/add/', AddSoinView.as_view(), name="add_soins")
 ]

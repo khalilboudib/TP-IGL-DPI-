@@ -33,7 +33,7 @@ class AddDPISerializer(serializers.ModelSerializer):
         required=True,
         write_only=True,
     )
-    dpi_input = DPISerializer()  # Nested DPI serializer
+    dpi_input = DPISerializer(write_only=True)  # Nested DPI serializer
 
     class Meta:
         model = Utilisateur
