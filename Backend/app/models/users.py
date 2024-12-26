@@ -8,6 +8,7 @@ from datetime import datetime
 
 class Utilisateur(AbstractUser):
     email = models.EmailField(unique=True)
+    username = None
     birth_date = models.DateTimeField(null=True, blank=True)
     phone = models.CharField(max_length=20)
     adresse = models.CharField(max_length=100)
@@ -45,16 +46,16 @@ class Utilisateur(AbstractUser):
         return f"{self.email}_{self.role}"
 
 class Medecin(models.Model):
-    user = models.OneToOneField(Utilisateur, on_delete=models.SET_NULL, null=True)
+    user = models.OneToOneField(Utilisateur, on_delete=models.SET_NULL, null=True, related_name="medecin_profile")
 
 class Infirmier(models.Model):
-    user = models.OneToOneField(Utilisateur, on_delete=models.SET_NULL, null=True)
+    user = models.OneToOneField(Utilisateur, on_delete=models.SET_NULL, null=True, related_name="infirmier_profile")
 
 class Laboratoire(models.Model):
-    user = models.OneToOneField(Utilisateur, on_delete=models.SET_NULL, null=True)
+    user = models.OneToOneField(Utilisateur, on_delete=models.SET_NULL, null=True, related_name="laborantin_profile")
 
 class Radiologue(models.Model):
-    user = models.OneToOneField(Utilisateur, on_delete=models.SET_NULL, null=True)
+    user = models.OneToOneField(Utilisateur, on_delete=models.SET_NULL, null=True, related_name="radiologue_profile")
 
 class admin(models.Model):   
-    user = models.OneToOneField(Utilisateur, on_delete=models.SET_NULL, null=True)
+    user = models.OneToOneField(Utilisateur, on_delete=models.SET_NULL, null=True, related_name="admin_profile")
