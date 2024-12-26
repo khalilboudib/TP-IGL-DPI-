@@ -89,7 +89,7 @@ export class DpiListComponent implements OnInit {
     this.http.get<DPI[]>(apiUrl).subscribe({
       next: (data) => {
         this.dpis = data;
-        console.log('Fetched DPIs:', this.dpis);
+        //console.log('Fetched DPIs:', this.dpis);
       },
       error: (err) => {
         console.error('Error fetching DPIs:', err);
