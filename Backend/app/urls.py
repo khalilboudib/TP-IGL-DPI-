@@ -3,7 +3,7 @@ from django.urls import path
 from app.views import authentication
 from app.views.login import CustomTokenObtainPairView
 from app.views.admin import AdminView
-from app.views.register import RegisterView
+from app.views.users import RegisterView, ListUsersView
 from app.views.dpi import AddDPIView
 from app.views.soins import AddSoinView, ListSoinsView
 
@@ -16,5 +16,6 @@ urlpatterns = [
     path('users/add/', RegisterView.as_view(), name="register_view"),
     path('dpi/add/', AddDPIView.as_view(), name="add_dpi_view"),
     path('soins/add/', AddSoinView.as_view(), name="add_soins"),
-    path('soins/', ListSoinsView.as_view(), name="list_soins")
+    path('soins/', ListSoinsView.as_view(), name="list_soins"),
+    path('users/', ListUsersView.as_view(), name="list_users"),
 ]

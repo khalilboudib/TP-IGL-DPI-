@@ -3,8 +3,8 @@ POST http://127.0.0.1:8000/app/login/
 Content-Type: application/json
 
 {
-    "email":"infirmier2@gmail.com",
-    "password":"bndbndbnd"
+    "email":"ma_bendaoud@esi.dz",
+    "password":"bnd"
 
 }
 
@@ -67,4 +67,10 @@ Content-Type: application/json
 # ---------------- list soins -------------------
 GET http://127.0.0.1:8000/app/soins/
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1Mjk1NDU5LCJpYXQiOjE3MzUyOTUxNTksImp0aSI6IjZkMzI5MzlkNjQyNTRiZTFiNzEyNzJiNWVjZjhlYTZmIiwidXNlcl9pZCI6MTcsInJvbGUiOiJpbmZpcm1pZXIifQ.kXPi-qyShZHQRMoPTnojswmIHFOdBTaXR1tMt0gCa9Y
+Content-Type: application/json
+
+###
+# ---------------- list users -------------------
+GET http://127.0.0.1:8000/app/users/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1Mjk2MjcwLCJpYXQiOjE3MzUyOTU5NzAsImp0aSI6IjA0YzA0NWM2NmExMDQ3NzliMzNmYTNjYjc3ZWI1YmE1IiwidXNlcl9pZCI6MSwicm9sZSI6ImFkbWluIn0.bomCxSMs3XEAuWigiJceXkAz61LxBaR2PHarnSLmFAc
 Content-Type: application/json
