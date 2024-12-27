@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
-from app.models import Utilisateur
+from app.models import *
 from django.contrib.auth.password_validation import validate_password
 
 class RegisterSerializer(serializers.ModelSerializer):
@@ -32,6 +32,8 @@ class RegisterSerializer(serializers.ModelSerializer):
     def validate(self, attrs):
         if attrs['password'] != attrs['password2']:
             raise serializers.ValidationError({"password": "Password fields didn't match."})
+        if attrs['role'] == 'patient':
+            raise serializers.ValidationError({"DPI can be created at /dpi/add"})
         return attrs
     
     def create(self, validated_data):
@@ -47,5 +49,18 @@ class RegisterSerializer(serializers.ModelSerializer):
         # the password is saved this way to be hashed
         user.set_password(validated_data["password"])
         user.save()
+
+        # create associated user object
+        role = validated_data['role']
+        if role == 'medecin':
+            Medecin.objects.create(user=user)
+        elif role == "infirmier":
+            Infirmier.objects.create(user=user)
+        elif role == "radiologue":
+            Radiologue.objects.create(user=user)
+        elif role == "laborantin":
+            Laboratoire.objects.create(user=user)
+        elif role == "admin":
+            admin.objects.create(user=user)
 
         return user

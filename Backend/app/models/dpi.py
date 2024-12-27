@@ -8,20 +8,15 @@ from datetime import datetime
 class DPI(models.Model):
     id_dpi = models.AutoField(primary_key=True)
     date_creation = models.DateTimeField(default=datetime.now)
-    NSS = models.CharField(max_length=30)
+    nss = models.CharField(max_length=30)
     mutuelle = models.CharField(max_length=100)
     contact_info = models.CharField(max_length=100)
-    chemin_QR_code = models.CharField(max_length=255) # to be updated
-
-    # relations with objects
-    #diagnostic = models.ForeignKey(Diagnostic, on_delete=models.SET_NULL, null=True)
-    #compte_Rendu = models.ForeignKey(Compte_Rendu, on_delete=models.SET_NULL, null=True)
-    #certificatMedical = models.ForeignKey(CertificatMedical, on_delete=models.SET_NULL, null=True)
-    #hospitalisation = models.ForeignKey(Hospitalisation, on_delete=models.SET_NULL, null=True)
+    #chemin_QR_code = models.CharField(max_length=255) # to be updated
 
     # relations with users
     user = models.OneToOneField(Utilisateur, on_delete=models.SET_NULL, null=True)
     #medecin_traitant = models.ManyToManyField(Medecin)
+    
     
         
     

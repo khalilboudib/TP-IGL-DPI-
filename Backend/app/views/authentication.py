@@ -74,7 +74,7 @@ def index_POST(request):
     if request.method == 'POST':
         #medicament_data = JSONParser().parse(request)
         medicament_data = request.data
-        medicament_serializer = DPISerializer(data=medicament_data)
+        medicament_serializer = UtilisateurSerializer(data=medicament_data)
         if medicament_serializer.is_valid():
             medicament_serializer.save()
             return Response(medicament_serializer.data, status=201)
