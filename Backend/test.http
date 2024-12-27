@@ -3,9 +3,8 @@ POST http://127.0.0.1:8000/app/login/
 Content-Type: application/json
 
 {
-    "email":"infirmier@gmail.com",
-    "password":"bndbndbnd"
-
+    "email":"ma_bendaoud@esi.dz",
+    "password":"bnd"
 }
 
 ###
@@ -27,20 +26,20 @@ Content-Type: application/json
 ###
 # -------------------- create dpi -----------------
 POST http://127.0.0.1:8000/app/dpi/add/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1MjI1ODY2LCJpYXQiOjE3MzUyMjU1NjYsImp0aSI6ImEyMThhYTA0OTFmODQ1MmU5OTQwYjA0ZWFlNzQyMzNjIiwidXNlcl9pZCI6MTQsInJvbGUiOiJpbmZpcm1pZXIifQ.hPviYGbsYVww2gthemzBEOEi_G8LXu_2lTalBe_DWFs
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1Mjk2OTg4LCJpYXQiOjE3MzUyOTY2ODgsImp0aSI6IjFmZTAxNGRhYzdmMjQ0MGNhMzY4ZDY2YzFmMmNkNGI1IiwidXNlcl9pZCI6MSwicm9sZSI6ImFkbWluIn0.3yVk9d-nAZHNkGHk1vMOS1pO21VDefpZjP7adBf7y_0
 Content-Type: application/json
 
 {
     "first_name": "patient",
     "last_name": "patient",
-    "email": "patient23@gmail.com",
+    "email": "patient24@gmail.com",
     "password": "bndbndbnd",
     "password2": "bndbndbnd",
     "phone": "bnd",
     "adresse": "bnd",
     "role": "patient",
     "dpi_input": {
-        "nss": "1289",
+        "nss": "patient24_nss",
         "mutuelle": "HealthCare",
         "contact_info": "contact@example.com"
     }
@@ -49,16 +48,34 @@ Content-Type: application/json
 ###
 # ---------------- register new user (not dpi) -----
 POST http://127.0.0.1:8000/app/users/add/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1MjI1ODY2LCJpYXQiOjE3MzUyMjU1NjYsImp0aSI6ImEyMThhYTA0OTFmODQ1MmU5OTQwYjA0ZWFlNzQyMzNjIiwidXNlcl9pZCI6MTQsInJvbGUiOiJpbmZpcm1pZXIifQ.hPviYGbsYVww2gthemzBEOEi_G8LXu_2lTalBe_DWFs
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1Mjk1MzU0LCJpYXQiOjE3MzUyOTUwNTQsImp0aSI6Ijg1OTdhNTA5NDI5NjQwNWNiY2U5Njc1N2FjOWJmOWJhIiwidXNlcl9pZCI6MTQsInJvbGUiOiJpbmZpcm1pZXIifQ.559XatPaJ4rC_dXULBp1b48-JTJFYm_qU4Ma1zDlVW0
 Content-Type: application/json
 
 {
     "first_name":"patient",
     "last_name":"patient",
-    "email":"patient@gmail.com",
+    "email":"infirmier2@gmail.com",
     "password":"bndbndbnd",
     "password2":"bndbndbnd",
     "phone":"bnd",
     "adresse":"bnd",
-    "role":"patient"
+    "role":"infirmier"
 }
+
+###
+# ---------------- list soins -------------------
+GET http://127.0.0.1:8000/app/soins/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1Mjk1NDU5LCJpYXQiOjE3MzUyOTUxNTksImp0aSI6IjZkMzI5MzlkNjQyNTRiZTFiNzEyNzJiNWVjZjhlYTZmIiwidXNlcl9pZCI6MTcsInJvbGUiOiJpbmZpcm1pZXIifQ.kXPi-qyShZHQRMoPTnojswmIHFOdBTaXR1tMt0gCa9Y
+Content-Type: application/json
+
+###
+# ---------------- list users -------------------
+GET http://127.0.0.1:8000/app/users/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1Mjk2MjcwLCJpYXQiOjE3MzUyOTU5NzAsImp0aSI6IjA0YzA0NWM2NmExMDQ3NzliMzNmYTNjYjc3ZWI1YmE1IiwidXNlcl9pZCI6MSwicm9sZSI6ImFkbWluIn0.bomCxSMs3XEAuWigiJceXkAz61LxBaR2PHarnSLmFAc
+Content-Type: application/json
+
+###
+# ---------------- list dpis -------------------
+GET http://127.0.0.1:8000/app/dpi/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1Mjk2OTg4LCJpYXQiOjE3MzUyOTY2ODgsImp0aSI6IjFmZTAxNGRhYzdmMjQ0MGNhMzY4ZDY2YzFmMmNkNGI1IiwidXNlcl9pZCI6MSwicm9sZSI6ImFkbWluIn0.3yVk9d-nAZHNkGHk1vMOS1pO21VDefpZjP7adBf7y_0
+Content-Type: application/json

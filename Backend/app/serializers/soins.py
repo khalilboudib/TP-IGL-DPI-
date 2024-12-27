@@ -26,7 +26,7 @@ class AddSoinSerializer(serializers.ModelSerializer):
         soin = Soin.objects.create(
             soin_infirmier = validated_data['soin_infirmier'],
             observation_patient= validated_data["observation_patient"],
-            infirmier = self.context["request"].user.infirmier_profile,
+            infirmier = self.context["request"].user.infirmier_profile, # infirmier that created it
             dpi = validated_data['dpi']
         )
         soin.save()
@@ -37,3 +37,23 @@ class AddSoinSerializer(serializers.ModelSerializer):
         )
 
         return soin
+    
+# listing all soins
+class ListAdminMedicament(serializers.ModelSerializer):
+    class Meta:
+        model = AdminMedicament
+        fields = [
+            "advice",
+        ]
+class ListSoinsSerializer(serializers.ModelSerializer):
+    
+    admin_medicament = ListAdminMedicament(many=True, read_only=True)
+    class Meta:
+        model = Soin
+        fields = [
+            "soin_infirmier",
+            "observation_patient",
+            "infirmier",
+            "dpi",
+            "admin_medicament"
+        ]
