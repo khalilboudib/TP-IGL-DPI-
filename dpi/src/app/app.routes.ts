@@ -11,6 +11,7 @@ export const routes: Routes = [
     { path: 'profil', loadComponent: () => import('./admin-profil/admin-profil.component').then(m => m.AdminProfilComponent) },
     { path: 'dpi-list', loadComponent: () => import('./dpi-list/dpi-list.component').then(m => m.DpiListComponent) },
     { path: 'create-dpi', loadComponent: () => import('./create-dpi/create-dpi.component').then(m => m.CreateDpiComponent) },
+    { path: 'trend-graph', loadComponent: () => import('./trend-graph/trend-graph.component').then(m => m.TrendGraphComponent) },
     { path: '', redirectTo: '/home', pathMatch: 'full' }
   ];
 
