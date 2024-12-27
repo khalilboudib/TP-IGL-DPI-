@@ -47,7 +47,10 @@ def ajout_diagnostic(request):
     except Diagnostic.DoesNotExist:
         return Response(f"Diagnostic with id {diagnostic_id} does not exist", status=404)
     
-    diagnostic_text = request.data['diagnostic']
+    diagnostic_text = request.data.get['diagnostic']
+    if not diagnostic_text:
+        return Response("diagnostic is required", status=400)
+    
     diagnostic.diagnostic = diagnostic_text
     serializer = DiagnosticSerializer(data=diagnostic)
     if serializer.is_valid():

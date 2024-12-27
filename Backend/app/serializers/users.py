@@ -64,3 +64,8 @@ class RegisterSerializer(serializers.ModelSerializer):
             admin.objects.create(user=user)
 
         return user
+    
+class ListUsersSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Utilisateur
+        fields = ('first_name', 'last_name', 'email', 'phone', 'adresse', 'role')
