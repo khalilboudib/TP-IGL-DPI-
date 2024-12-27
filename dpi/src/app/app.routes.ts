@@ -7,6 +7,10 @@ export const routes: Routes = [
     { path: 'home', loadComponent: () => import('./home/home.component').then(m => m.HomeComponent) },
     { path: 'patient', loadComponent: () => import('./patient/patient.component').then(m => m.PatientComponent) },
     { path: 'add-user', loadComponent: () => import('./add-user/add-user.component').then(m => m.AddUserComponent) },
+    { path: 'dashboard', loadComponent: () => import('./admin-dashboard/admin-dashboard.component').then(m => m.AdminDashboardComponent) },
+    { path: 'profil', loadComponent: () => import('./admin-profil/admin-profil.component').then(m => m.AdminProfilComponent) },
+    { path: 'dpi-list', loadComponent: () => import('./dpi-list/dpi-list.component').then(m => m.DpiListComponent) },
+    { path: 'create-dpi', loadComponent: () => import('./create-dpi/create-dpi.component').then(m => m.CreateDpiComponent) },
     { path: '', redirectTo: '/home', pathMatch: 'full' }
   ];
 
@@ -15,3 +19,4 @@ export const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
