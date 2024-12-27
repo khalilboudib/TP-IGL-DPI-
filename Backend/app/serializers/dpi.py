@@ -76,3 +76,14 @@ class AddDPISerializer(serializers.ModelSerializer):
         )
 
         return user
+    
+class ListUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Utilisateur
+        fields = ('first_name', 'last_name', 'email', 'phone', 'adresse', 'role')
+
+class ListDPIsSerializer(serializers.ModelSerializer):
+    user = ListUserSerializer(read_only=True)
+    class Meta:
+        model = DPI
+        fields = ('user', 'nss', 'mutuelle', 'contact_info', 'date_creation')

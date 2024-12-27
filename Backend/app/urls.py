@@ -4,7 +4,7 @@ from app.views import authentication
 from app.views.login import CustomTokenObtainPairView
 from app.views.admin import AdminView
 from app.views.users import RegisterView, ListUsersView
-from app.views.dpi import AddDPIView
+from app.views.dpi import AddDPIView, ListDPIsView
 from app.views.soins import AddSoinView, ListSoinsView
 
 urlpatterns = [
@@ -18,4 +18,5 @@ urlpatterns = [
     path('soins/add/', AddSoinView.as_view(), name="add_soins"),
     path('soins/', ListSoinsView.as_view(), name="list_soins"),
     path('users/', ListUsersView.as_view(), name="list_users"),
+    path('dpi/', ListDPIsView.as_view(), name="list_dpis"),
 ]
