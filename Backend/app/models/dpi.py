@@ -18,5 +18,6 @@ class DPI(models.Model):
     #medecin_traitant = models.ManyToManyField(Medecin)
     
     
+        
     
     

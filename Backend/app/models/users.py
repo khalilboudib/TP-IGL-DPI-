@@ -80,4 +80,4 @@ class Radiologue(models.Model):
     user = models.OneToOneField(Utilisateur, on_delete=models.SET_NULL, null=True, related_name="radiologue_profile")
 
 class admin(models.Model):   
-    user = models.OneToOneField(Utilisateur, on_delete=models.SET_NULL, null=True, related_name="admin_profile")
+    user = models.OneToOneField(Utilisateur, on_delete=models.CASCADE, primary_key=True, related_name="admin_profile")
