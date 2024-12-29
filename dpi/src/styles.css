@@ -5,6 +5,6 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: 'Abhaya Libre', sans-serif;
-  background-color: hsla(168, 37%, 25%, 1);
-  background-image: url('./../public/green.jpg');
+  background-color: #28574E;
+  /*background-image: url('./../public/green.jpg');*/
 }
