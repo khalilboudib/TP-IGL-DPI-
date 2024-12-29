@@ -10,6 +10,19 @@ from rest_framework.exceptions import ValidationError
 def crea_Consultation(request):
     #request must have the id of the current diagnostic and the consultation attributes
     
+    diagnostic_id = request.data['diagnostic']
+    if not diagnostic_id:
+        return Response("id_diagnostic is required", status=400)
+    
+    try:
+        diagnostic = Diagnostic.objects.get(id_diagnostic=diagnostic_id)
+    except Diagnostic.DoesNotExist:
+        return Response(f"Diagnostic with id {diagnostic_id} does not exist", status=404)
+    
+    diagnostic_text = request.data.get('diagnostic')
+    if not diagnostic_text:
+        return Response("diagnostic is required", status=400)
+    
     consultation = request.data
     serializer = ConsultationSerializer(data=consultation)
     if serializer.is_valid():
@@ -20,7 +33,7 @@ def crea_Consultation(request):
 class ConsultationListView(ListAPIView):
     serializer_class = ConsultationSerializer
     def post(self, request, *args, **kwargs):
-        id_diagnostic = request.data.get('id_diagnostic')
+        id_diagnostic = request.data.get('diagnostic')
         if not id_diagnostic:
             raise ValidationError({"error": "id_diagnostic is required"})
         
@@ -36,6 +49,13 @@ class ConsultationListView(ListAPIView):
 @api_view(['POST'])
 def ajout_resume(request):
     #request must have the id of the current consultation and the resume attributes
+    consultation_id = request.data['consultation']
+    if not consultation_id:
+        return Response("id_consultation is required", status=400)
+    try:
+        consultation = Consultation.objects.get(id_consultation=consultation_id)
+    except Consultation.DoesNotExist:
+        return Response(f"Consultation with id {consultation_id} does not exist", status=404)
     
     resume = request.data
     serializer = ResumeSerializer(data=resume)
@@ -47,7 +67,7 @@ def ajout_resume(request):
 class ResumeListView(ListAPIView):
     serializer_class = ResumeSerializer
     def post(self, request, *args, **kwargs):
-        id_consultation = request.data.get('id_consultation')
+        id_consultation = request.data.get('consultation')
         if not id_consultation:
             raise ValidationError({"error": "id_consultation is required"})
         

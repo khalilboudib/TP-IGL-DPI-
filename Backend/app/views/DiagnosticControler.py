@@ -25,7 +25,7 @@ class DiagnosticListView(ListAPIView):
     def post(self, request, *args, **kwargs):
         id_dpi = request.data.get('id_dpi')
         if not id_dpi:
-            raise ValidationError({"error": "dpi_id is required"})
+            raise ValidationError({"error": "id_dpi is required"})
         
         diagnostics = Diagnostic.objects.filter(dpi=id_dpi)
         if not diagnostics.exists():
@@ -47,12 +47,12 @@ def ajout_diagnostic(request):
     except Diagnostic.DoesNotExist:
         return Response(f"Diagnostic with id {diagnostic_id} does not exist", status=404)
     
-    diagnostic_text = request.data.get['diagnostic']
+    diagnostic_text = request.data.get('diagnostic')
     if not diagnostic_text:
         return Response("diagnostic is required", status=400)
     
     diagnostic.diagnostic = diagnostic_text
-    serializer = DiagnosticSerializer(data=diagnostic)
+    serializer = DiagnosticSerializer(diagnostic, data=request.data, partial=True)
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data, status=201)

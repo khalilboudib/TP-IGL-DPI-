@@ -70,7 +70,7 @@ class Medicament(models.Model):
 
 class Ordonnance(models.Model):
     id_ordonnance = models.AutoField(primary_key=True)
-    date_creation = models.DateField(default=datetime.now)
+    date_creation = models.DateTimeField(default=datetime.now)
     validated = models.TextField(choices=StatutValidationOrdonnance.choices)
     diagnostic = models.OneToOneField("app.Diagnostic", on_delete=models.SET_NULL, null=True, related_name="ordonnance")
 
@@ -114,6 +114,7 @@ class Resultat_Biologique(models.Model):
 class ImageMedicale(models.Model):
     id_image = models.AutoField(primary_key=True)
     chemin_fichier = models.CharField(max_length=255)
+    examen_radiologique = models.OneToOneField("app.Examen_Radiologique", on_delete=models.SET_NULL, null=True, related_name="resultat")
 
 class Bilan_Radiologique(models.Model):
     id_bilan_radiologique = models.AutoField(primary_key=True)
@@ -122,8 +123,7 @@ class Bilan_Radiologique(models.Model):
 
 class Examen_Radiologique(models.Model):
     id_examen = models.AutoField(primary_key=True)
-    resultat = models.OneToOneField(ImageMedicale, on_delete=models.SET_NULL, null=True)
-    date_examen = models.DateField()
+    date_examen = models.DateTimeField(default=datetime.now)
     #Radiologue = models.OneToOneField("app.Radiologue", on_delete=models.SET_NULL, null=True)
     TypeRadio = models.TextField(choices=TypeRadio.choices)
     bilan_radiologique = models.ForeignKey(Bilan_Radiologique, on_delete=models.SET_NULL, null=True, related_name="examen_radiologiques")
@@ -162,6 +162,7 @@ class Decompte_des_frais(models.Model):
     montant_rembourse = models.FloatField()
     montant_a_payer = models.FloatField()
     admin = models.OneToOneField("app.admin", on_delete=models.SET_NULL, null=True)
+    hospitalisation = models.ForeignKey("app.Hospitalisation", on_delete=models.SET_NULL, null=True, related_name="decompte")
 
 class Hospitalisation(models.Model):
     id_hospitalisation = models.AutoField(primary_key=True)
@@ -170,6 +171,5 @@ class Hospitalisation(models.Model):
     date_sortie = models.DateField()
     nbr_chamisation = models.IntegerField()
     etablissement_hospitalier = models.CharField(max_length=100)
-    decompte_des_frais = models.OneToOneField(Decompte_des_frais, on_delete=models.SET_NULL, null=True)
 
 
