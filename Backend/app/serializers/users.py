@@ -3,6 +3,7 @@ from rest_framework.validators import UniqueValidator
 from app.models import *
 from django.contrib.auth.password_validation import validate_password
 from app.serializers.soins import ListSoinsSerializer
+from app.serializers.dpi import ListDPIsSerializer
 
 class RegisterSerializer(serializers.ModelSerializer):
     # ensuring email is unique
@@ -75,7 +76,7 @@ class ListUsersSerializer(serializers.ModelSerializer):
 # get user profile
 class GetUserSerializer(serializers.ModelSerializer):
     soins = serializers.SerializerMethodField()
-
+    dpis = serializers.SerializerMethodField()
     class Meta:
         model = Utilisateur
         fields = '__all__'
@@ -83,5 +84,10 @@ class GetUserSerializer(serializers.ModelSerializer):
     def get_soins(self, obj):
         if obj.role == 'infirmier':
             return ListSoinsSerializer(obj.infirmier_profile.soins.all(), many=True).data
+        else:
+            return None
+    def get_dpis(self, obj):
+        if obj.role == 'medecin':
+            return ListDPIsSerializer(obj.medecin_profile.dpis.all(), many=True).data
         else:
             return None

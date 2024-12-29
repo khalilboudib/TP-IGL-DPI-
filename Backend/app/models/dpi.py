@@ -15,7 +15,7 @@ class DPI(models.Model):
 
     # relations with users
     user = models.OneToOneField(Utilisateur, on_delete=models.SET_NULL, null=True)
-    #medecin_traitant = models.ManyToManyField(Medecin)
+    medecin_traitant = models.ForeignKey(Medecin, on_delete=models.SET_NULL, null=True, related_name='dpis')
     
     
     

@@ -15,7 +15,6 @@ class AddSoinSerializer(serializers.ModelSerializer):
         fields = [
             "soin_infirmier",
             "observation_patient",
-            "infirmier",
             "dpi",
             "admin_medicament_input"
         ]
