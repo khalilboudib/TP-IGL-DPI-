@@ -3,9 +3,9 @@ from django.urls import path
 from app.views import authentication
 from app.views.login import CustomTokenObtainPairView
 from app.views.admin import AdminView
-from app.views.users import RegisterView, ListUsersView
-from app.views.dpi import AddDPIView, ListDPIsView
-from app.views.soins import AddSoinView, ListSoinsView
+from app.views.users import *
+from app.views.dpi import *
+from app.views.soins import *
 
 urlpatterns = [
     path('POST/', authentication.index_POST, name='index_POST'),
@@ -19,4 +19,7 @@ urlpatterns = [
     path('soins/', ListSoinsView.as_view(), name="list_soins"),
     path('users/', ListUsersView.as_view(), name="list_users"),
     path('dpi/', ListDPIsView.as_view(), name="list_dpis"),
+    path('users/<int:pk>/', GetUserView.as_view(), name="get_user"),
+    path('dpi/<int:pk>/', GetDPIView.as_view(), name="get_dpi"),
+    path('soins/<int:pk>/', GetSoinView.as_view(), name="get_soin"),
 ]

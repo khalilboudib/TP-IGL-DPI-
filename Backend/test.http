@@ -3,8 +3,8 @@ POST http://127.0.0.1:8000/app/login/
 Content-Type: application/json
 
 {
-    "email":"ma_bendaoud@esi.dz",
-    "password":"bnd"
+    "email":"infirmier@gmail.com",
+    "password":"bndbndbnd"
 }
 
 ###
@@ -65,17 +65,35 @@ Content-Type: application/json
 ###
 # ---------------- list soins -------------------
 GET http://127.0.0.1:8000/app/soins/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1Mjk1NDU5LCJpYXQiOjE3MzUyOTUxNTksImp0aSI6IjZkMzI5MzlkNjQyNTRiZTFiNzEyNzJiNWVjZjhlYTZmIiwidXNlcl9pZCI6MTcsInJvbGUiOiJpbmZpcm1pZXIifQ.kXPi-qyShZHQRMoPTnojswmIHFOdBTaXR1tMt0gCa9Y
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NDcwMjIwLCJpYXQiOjE3MzU0NjY2MjAsImp0aSI6IjYxZjVkNDQ0MTVkNzQ3ZjM4ODFhYWMzMmMzZDk0ZGM4IiwidXNlcl9pZCI6MTQsInJvbGUiOiJpbmZpcm1pZXIifQ.-tV-Dd9atPS9VqTVE0hTZ_dg6p-O7APws84yGcRwY-w
 Content-Type: application/json
 
 ###
 # ---------------- list users -------------------
 GET http://127.0.0.1:8000/app/users/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1Mjk2MjcwLCJpYXQiOjE3MzUyOTU5NzAsImp0aSI6IjA0YzA0NWM2NmExMDQ3NzliMzNmYTNjYjc3ZWI1YmE1IiwidXNlcl9pZCI6MSwicm9sZSI6ImFkbWluIn0.bomCxSMs3XEAuWigiJceXkAz61LxBaR2PHarnSLmFAc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NDY5NzUzLCJpYXQiOjE3MzU0NjYxNTMsImp0aSI6ImZiMTIxOTZjZGQwNjQ4YTI4NWYzOGRhMTBiNzIyZTMwIiwidXNlcl9pZCI6MSwicm9sZSI6ImFkbWluIn0.HZCoJ0l3KUzZFOrFmdAUDkF7yWY3ikT5VcRKMqnk_48
 Content-Type: application/json
 
 ###
 # ---------------- list dpis -------------------
 GET http://127.0.0.1:8000/app/dpi/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1Mjk2OTg4LCJpYXQiOjE3MzUyOTY2ODgsImp0aSI6IjFmZTAxNGRhYzdmMjQ0MGNhMzY4ZDY2YzFmMmNkNGI1IiwidXNlcl9pZCI6MSwicm9sZSI6ImFkbWluIn0.3yVk9d-nAZHNkGHk1vMOS1pO21VDefpZjP7adBf7y_0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NDcwMjIwLCJpYXQiOjE3MzU0NjY2MjAsImp0aSI6IjYxZjVkNDQ0MTVkNzQ3ZjM4ODFhYWMzMmMzZDk0ZGM4IiwidXNlcl9pZCI6MTQsInJvbGUiOiJpbmZpcm1pZXIifQ.-tV-Dd9atPS9VqTVE0hTZ_dg6p-O7APws84yGcRwY-w
+Content-Type: application/json
+
+###
+# ---------------- get specific user -------------------
+GET http://127.0.0.1:8000/app/users/14/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NDcwMjIwLCJpYXQiOjE3MzU0NjY2MjAsImp0aSI6IjYxZjVkNDQ0MTVkNzQ3ZjM4ODFhYWMzMmMzZDk0ZGM4IiwidXNlcl9pZCI6MTQsInJvbGUiOiJpbmZpcm1pZXIifQ.-tV-Dd9atPS9VqTVE0hTZ_dg6p-O7APws84yGcRwY-w
+Content-Type: application/json
+
+###
+# ---------------- get specific dpi -------------------
+GET http://127.0.0.1:8000/app/dpi/8/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NDcwMjIwLCJpYXQiOjE3MzU0NjY2MjAsImp0aSI6IjYxZjVkNDQ0MTVkNzQ3ZjM4ODFhYWMzMmMzZDk0ZGM4IiwidXNlcl9pZCI6MTQsInJvbGUiOiJpbmZpcm1pZXIifQ.-tV-Dd9atPS9VqTVE0hTZ_dg6p-O7APws84yGcRwY-w
+Content-Type: application/json
+
+###
+# ---------------- get specific soin -------------------
+GET http://127.0.0.1:8000/app/soins/1/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NDcwMjIwLCJpYXQiOjE3MzU0NjY2MjAsImp0aSI6IjYxZjVkNDQ0MTVkNzQ3ZjM4ODFhYWMzMmMzZDk0ZGM4IiwidXNlcl9pZCI6MTQsInJvbGUiOiJpbmZpcm1pZXIifQ.-tV-Dd9atPS9VqTVE0hTZ_dg6p-O7APws84yGcRwY-w
 Content-Type: application/json

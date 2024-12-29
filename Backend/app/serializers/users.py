@@ -2,6 +2,7 @@ from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 from app.models import *
 from django.contrib.auth.password_validation import validate_password
+from app.serializers.soins import ListSoinsSerializer
 
 class RegisterSerializer(serializers.ModelSerializer):
     # ensuring email is unique
@@ -68,4 +69,19 @@ class RegisterSerializer(serializers.ModelSerializer):
 class ListUsersSerializer(serializers.ModelSerializer):
     class Meta:
         model = Utilisateur
-        fields = ('first_name', 'last_name', 'email', 'phone', 'adresse', 'role')
+        fields = '__all__'
+
+
+# get user profile
+class GetUserSerializer(serializers.ModelSerializer):
+    soins = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Utilisateur
+        fields = '__all__'
+        
+    def get_soins(self, obj):
+        if obj.role == 'infirmier':
+            return ListSoinsSerializer(obj.infirmier_profile.soins.all(), many=True).data
+        else:
+            return None

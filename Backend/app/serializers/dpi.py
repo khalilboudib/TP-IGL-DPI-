@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
-from app.models import Utilisateur, DPI
+from app.models import Utilisateur, DPI, Soin
 from django.contrib.auth.password_validation import validate_password
 
 # Nested serializer for DPI
@@ -82,8 +82,20 @@ class ListUserSerializer(serializers.ModelSerializer):
         model = Utilisateur
         fields = ('first_name', 'last_name', 'email', 'phone', 'adresse', 'role')
 
+class ListSoinSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Soin
+        fields = '__all__'
+
 class ListDPIsSerializer(serializers.ModelSerializer):
     user = ListUserSerializer(read_only=True)
     class Meta:
         model = DPI
-        fields = ('user', 'nss', 'mutuelle', 'contact_info', 'date_creation')
+        fields = '__all__'
+
+class GetDPISerializer(serializers.ModelSerializer):
+    user = ListUserSerializer(read_only=True)
+    soins = ListSoinSerializer(many=True, read_only=True)
+    class Meta:
+        model = DPI
+        fields = '__all__'
