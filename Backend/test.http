@@ -119,7 +119,7 @@ Content-Type: application/json
 ###
 #-----------------ajout bilan biologique---------------
 POST http://127.0.0.1:8000/app/add_bilan_bio/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NDcwMTgzLCJpYXQiOjE3MzU0Njk4ODMsImp0aSI6ImI2MmU4NTA3NGQ5YzRiZWNhNGVlMDllODQyOTZjYWYwIiwidXNlcl9pZCI6NCwicm9sZSI6Im1lZGVjaW4ifQ.u3nAslO6Ade1d6uRj6BIB3FmRp3yhz26DLsI75rP8oE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NTA1ODUzLCJpYXQiOjE3MzU1MDU1NTMsImp0aSI6ImM3ZDE2MTk2OTU0YTRiODY4NmYzMzJiM2NlYmJmYTNjIiwidXNlcl9pZCI6NCwicm9sZSI6Im1lZGVjaW4ifQ.tZHbMm_5mq4RTBCH70qaEofgBAytDPrytydw3i_wQHc
 Content-Type: application/json
 
 {
@@ -143,7 +143,7 @@ Content-Type: application/json
 ###
 #-----------------list bilan biologique---------------
 POST http://127.0.0.1:8000/app/bilan_bio/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NDcwMTgzLCJpYXQiOjE3MzU0Njk4ODMsImp0aSI6ImI2MmU4NTA3NGQ5YzRiZWNhNGVlMDllODQyOTZjYWYwIiwidXNlcl9pZCI6NCwicm9sZSI6Im1lZGVjaW4ifQ.u3nAslO6Ade1d6uRj6BIB3FmRp3yhz26DLsI75rP8oE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NTA1ODUzLCJpYXQiOjE3MzU1MDU1NTMsImp0aSI6ImM3ZDE2MTk2OTU0YTRiODY4NmYzMzJiM2NlYmJmYTNjIiwidXNlcl9pZCI6NCwicm9sZSI6Im1lZGVjaW4ifQ.tZHbMm_5mq4RTBCH70qaEofgBAytDPrytydw3i_wQHc
 Content-Type: application/json
 
 {
@@ -153,7 +153,7 @@ Content-Type: application/json
 ###
 #-----------------list examen biologique---------------
 POST http://127.0.0.1:8000/app/resultats_bio/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NDcwMTgzLCJpYXQiOjE3MzU0Njk4ODMsImp0aSI6ImI2MmU4NTA3NGQ5YzRiZWNhNGVlMDllODQyOTZjYWYwIiwidXNlcl9pZCI6NCwicm9sZSI6Im1lZGVjaW4ifQ.u3nAslO6Ade1d6uRj6BIB3FmRp3yhz26DLsI75rP8oE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NTA1ODUzLCJpYXQiOjE3MzU1MDU1NTMsImp0aSI6ImM3ZDE2MTk2OTU0YTRiODY4NmYzMzJiM2NlYmJmYTNjIiwidXNlcl9pZCI6NCwicm9sZSI6Im1lZGVjaW4ifQ.tZHbMm_5mq4RTBCH70qaEofgBAytDPrytydw3i_wQHc
 Content-Type: application/json
 
 {
@@ -163,7 +163,7 @@ Content-Type: application/json
 ###
 #-----------------add bilan radiologique---------------
 POST http://127.0.0.1:8000/app/add_bilan_radio/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NDcwMTgzLCJpYXQiOjE3MzU0Njk4ODMsImp0aSI6ImI2MmU4NTA3NGQ5YzRiZWNhNGVlMDllODQyOTZjYWYwIiwidXNlcl9pZCI6NCwicm9sZSI6Im1lZGVjaW4ifQ.u3nAslO6Ade1d6uRj6BIB3FmRp3yhz26DLsI75rP8oE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NTA1ODUzLCJpYXQiOjE3MzU1MDU1NTMsImp0aSI6ImM3ZDE2MTk2OTU0YTRiODY4NmYzMzJiM2NlYmJmYTNjIiwidXNlcl9pZCI6NCwicm9sZSI6Im1lZGVjaW4ifQ.tZHbMm_5mq4RTBCH70qaEofgBAytDPrytydw3i_wQHc
 Content-Type: application/json
 
 {
@@ -173,7 +173,7 @@ Content-Type: application/json
 ###
 #-----------------add examen radiologique---------------
 POST http://127.0.0.1:8000/app/add_examen_radio/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NDcwMTgzLCJpYXQiOjE3MzU0Njk4ODMsImp0aSI6ImI2MmU4NTA3NGQ5YzRiZWNhNGVlMDllODQyOTZjYWYwIiwidXNlcl9pZCI6NCwicm9sZSI6Im1lZGVjaW4ifQ.u3nAslO6Ade1d6uRj6BIB3FmRp3yhz26DLsI75rP8oE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NTA1ODUzLCJpYXQiOjE3MzU1MDU1NTMsImp0aSI6ImM3ZDE2MTk2OTU0YTRiODY4NmYzMzJiM2NlYmJmYTNjIiwidXNlcl9pZCI6NCwicm9sZSI6Im1lZGVjaW4ifQ.tZHbMm_5mq4RTBCH70qaEofgBAytDPrytydw3i_wQHc
 Content-Type: application/json
 
 {
@@ -184,7 +184,7 @@ Content-Type: application/json
 ###
 #-----------------add resultat radiologique---------------
 POST http://127.0.0.1:8000/app/add_resultat_radio/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NDcwMTgzLCJpYXQiOjE3MzU0Njk4ODMsImp0aSI6ImI2MmU4NTA3NGQ5YzRiZWNhNGVlMDllODQyOTZjYWYwIiwidXNlcl9pZCI6NCwicm9sZSI6Im1lZGVjaW4ifQ.u3nAslO6Ade1d6uRj6BIB3FmRp3yhz26DLsI75rP8oE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NTA1ODUzLCJpYXQiOjE3MzU1MDU1NTMsImp0aSI6ImM3ZDE2MTk2OTU0YTRiODY4NmYzMzJiM2NlYmJmYTNjIiwidXNlcl9pZCI6NCwicm9sZSI6Im1lZGVjaW4ifQ.tZHbMm_5mq4RTBCH70qaEofgBAytDPrytydw3i_wQHc
 Content-Type: application/json
 
 {
@@ -195,7 +195,7 @@ Content-Type: application/json
 ###
 #-----------------list bilan radiologique---------------
 POST http://127.0.0.1:8000/app/bilan_radio/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NDcwMTgzLCJpYXQiOjE3MzU0Njk4ODMsImp0aSI6ImI2MmU4NTA3NGQ5YzRiZWNhNGVlMDllODQyOTZjYWYwIiwidXNlcl9pZCI6NCwicm9sZSI6Im1lZGVjaW4ifQ.u3nAslO6Ade1d6uRj6BIB3FmRp3yhz26DLsI75rP8oE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NTA1ODUzLCJpYXQiOjE3MzU1MDU1NTMsImp0aSI6ImM3ZDE2MTk2OTU0YTRiODY4NmYzMzJiM2NlYmJmYTNjIiwidXNlcl9pZCI6NCwicm9sZSI6Im1lZGVjaW4ifQ.tZHbMm_5mq4RTBCH70qaEofgBAytDPrytydw3i_wQHc
 Content-Type: application/json
 
 {
@@ -205,7 +205,7 @@ Content-Type: application/json
 ###
 #-----------------list examen radiologique---------------
 POST http://127.0.0.1:8000/app/examens_radio/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NDcwMTgzLCJpYXQiOjE3MzU0Njk4ODMsImp0aSI6ImI2MmU4NTA3NGQ5YzRiZWNhNGVlMDllODQyOTZjYWYwIiwidXNlcl9pZCI6NCwicm9sZSI6Im1lZGVjaW4ifQ.u3nAslO6Ade1d6uRj6BIB3FmRp3yhz26DLsI75rP8oE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NTA1ODUzLCJpYXQiOjE3MzU1MDU1NTMsImp0aSI6ImM3ZDE2MTk2OTU0YTRiODY4NmYzMzJiM2NlYmJmYTNjIiwidXNlcl9pZCI6NCwicm9sZSI6Im1lZGVjaW4ifQ.tZHbMm_5mq4RTBCH70qaEofgBAytDPrytydw3i_wQHc
 Content-Type: application/json
 
 {
@@ -215,7 +215,7 @@ Content-Type: application/json
 ###
 #-----------------list resultat radiologique---------------
 POST http://127.0.0.1:8000/app/resultats_radio/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NDcwMTgzLCJpYXQiOjE3MzU0Njk4ODMsImp0aSI6ImI2MmU4NTA3NGQ5YzRiZWNhNGVlMDllODQyOTZjYWYwIiwidXNlcl9pZCI6NCwicm9sZSI6Im1lZGVjaW4ifQ.u3nAslO6Ade1d6uRj6BIB3FmRp3yhz26DLsI75rP8oE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NTA1ODUzLCJpYXQiOjE3MzU1MDU1NTMsImp0aSI6ImM3ZDE2MTk2OTU0YTRiODY4NmYzMzJiM2NlYmJmYTNjIiwidXNlcl9pZCI6NCwicm9sZSI6Im1lZGVjaW4ifQ.tZHbMm_5mq4RTBCH70qaEofgBAytDPrytydw3i_wQHc
 Content-Type: application/json
 
 {
@@ -225,7 +225,7 @@ Content-Type: application/json
 ###
 #-----------------create ordanance---------------
 POST http://127.0.0.1:8000/app/create_ordanance/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NDcwMTgzLCJpYXQiOjE3MzU0Njk4ODMsImp0aSI6ImI2MmU4NTA3NGQ5YzRiZWNhNGVlMDllODQyOTZjYWYwIiwidXNlcl9pZCI6NCwicm9sZSI6Im1lZGVjaW4ifQ.u3nAslO6Ade1d6uRj6BIB3FmRp3yhz26DLsI75rP8oE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NTA1ODUzLCJpYXQiOjE3MzU1MDU1NTMsImp0aSI6ImM3ZDE2MTk2OTU0YTRiODY4NmYzMzJiM2NlYmJmYTNjIiwidXNlcl9pZCI6NCwicm9sZSI6Im1lZGVjaW4ifQ.tZHbMm_5mq4RTBCH70qaEofgBAytDPrytydw3i_wQHc
 Content-Type: application/json
 
 {
@@ -236,7 +236,7 @@ Content-Type: application/json
 ###
 #-----------------list ordanance---------------
 POST http://127.0.0.1:8000/app/ordanances/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NDcwMTgzLCJpYXQiOjE3MzU0Njk4ODMsImp0aSI6ImI2MmU4NTA3NGQ5YzRiZWNhNGVlMDllODQyOTZjYWYwIiwidXNlcl9pZCI6NCwicm9sZSI6Im1lZGVjaW4ifQ.u3nAslO6Ade1d6uRj6BIB3FmRp3yhz26DLsI75rP8oE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NTA1ODUzLCJpYXQiOjE3MzU1MDU1NTMsImp0aSI6ImM3ZDE2MTk2OTU0YTRiODY4NmYzMzJiM2NlYmJmYTNjIiwidXNlcl9pZCI6NCwicm9sZSI6Im1lZGVjaW4ifQ.tZHbMm_5mq4RTBCH70qaEofgBAytDPrytydw3i_wQHc
 Content-Type: application/json
 
 {
@@ -246,7 +246,7 @@ Content-Type: application/json
 ###
 #-----------------add medicament---------------
 POST http://127.0.0.1:8000/app/add_medicament/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NDcwMTgzLCJpYXQiOjE3MzU0Njk4ODMsImp0aSI6ImI2MmU4NTA3NGQ5YzRiZWNhNGVlMDllODQyOTZjYWYwIiwidXNlcl9pZCI6NCwicm9sZSI6Im1lZGVjaW4ifQ.u3nAslO6Ade1d6uRj6BIB3FmRp3yhz26DLsI75rP8oE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NTA1ODUzLCJpYXQiOjE3MzU1MDU1NTMsImp0aSI6ImM3ZDE2MTk2OTU0YTRiODY4NmYzMzJiM2NlYmJmYTNjIiwidXNlcl9pZCI6NCwicm9sZSI6Im1lZGVjaW4ifQ.tZHbMm_5mq4RTBCH70qaEofgBAytDPrytydw3i_wQHc
 Content-Type: application/json
 
 {
@@ -259,7 +259,7 @@ Content-Type: application/json
 ###
 #-----------------list medicaments---------------
 POST http://127.0.0.1:8000/app/medicaments/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NDcwMTgzLCJpYXQiOjE3MzU0Njk4ODMsImp0aSI6ImI2MmU4NTA3NGQ5YzRiZWNhNGVlMDllODQyOTZjYWYwIiwidXNlcl9pZCI6NCwicm9sZSI6Im1lZGVjaW4ifQ.u3nAslO6Ade1d6uRj6BIB3FmRp3yhz26DLsI75rP8oE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NTA1ODUzLCJpYXQiOjE3MzU1MDU1NTMsImp0aSI6ImM3ZDE2MTk2OTU0YTRiODY4NmYzMzJiM2NlYmJmYTNjIiwidXNlcl9pZCI6NCwicm9sZSI6Im1lZGVjaW4ifQ.tZHbMm_5mq4RTBCH70qaEofgBAytDPrytydw3i_wQHc
 Content-Type: application/json
 
 {
@@ -269,7 +269,7 @@ Content-Type: application/json
 ###
 #-----------------create consultation---------------
 POST http://127.0.0.1:8000/app/create_consultation/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NDcwMTgzLCJpYXQiOjE3MzU0Njk4ODMsImp0aSI6ImI2MmU4NTA3NGQ5YzRiZWNhNGVlMDllODQyOTZjYWYwIiwidXNlcl9pZCI6NCwicm9sZSI6Im1lZGVjaW4ifQ.u3nAslO6Ade1d6uRj6BIB3FmRp3yhz26DLsI75rP8oE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NTA1ODUzLCJpYXQiOjE3MzU1MDU1NTMsImp0aSI6ImM3ZDE2MTk2OTU0YTRiODY4NmYzMzJiM2NlYmJmYTNjIiwidXNlcl9pZCI6NCwicm9sZSI6Im1lZGVjaW4ifQ.tZHbMm_5mq4RTBCH70qaEofgBAytDPrytydw3i_wQHc
 Content-Type: application/json
 
 {
@@ -279,7 +279,7 @@ Content-Type: application/json
 ###
 #-----------------list consultations---------------
 POST http://127.0.0.1:8000/app/consultations/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NDcwMTgzLCJpYXQiOjE3MzU0Njk4ODMsImp0aSI6ImI2MmU4NTA3NGQ5YzRiZWNhNGVlMDllODQyOTZjYWYwIiwidXNlcl9pZCI6NCwicm9sZSI6Im1lZGVjaW4ifQ.u3nAslO6Ade1d6uRj6BIB3FmRp3yhz26DLsI75rP8oE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NTA1ODUzLCJpYXQiOjE3MzU1MDU1NTMsImp0aSI6ImM3ZDE2MTk2OTU0YTRiODY4NmYzMzJiM2NlYmJmYTNjIiwidXNlcl9pZCI6NCwicm9sZSI6Im1lZGVjaW4ifQ.tZHbMm_5mq4RTBCH70qaEofgBAytDPrytydw3i_wQHc
 Content-Type: application/json
 
 {
@@ -287,14 +287,49 @@ Content-Type: application/json
 }
 
 ###
+#-----------------list consultations---------------
+GET http://127.0.0.1:8000/app/consultations/?diagnostic=1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NTA1ODUzLCJpYXQiOjE3MzU1MDU1NTMsImp0aSI6ImM3ZDE2MTk2OTU0YTRiODY4NmYzMzJiM2NlYmJmYTNjIiwidXNlcl9pZCI6NCwicm9sZSI6Im1lZGVjaW4ifQ.tZHbMm_5mq4RTBCH70qaEofgBAytDPrytydw3i_wQHc
+Content-Type: application/json
+
+
+###
+#-----------------delete consultations---------------
+DELETE  http://127.0.0.1:8000/app/consultations/delete/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NTA1ODUzLCJpYXQiOjE3MzU1MDU1NTMsImp0aSI6ImM3ZDE2MTk2OTU0YTRiODY4NmYzMzJiM2NlYmJmYTNjIiwidXNlcl9pZCI6NCwicm9sZSI6Im1lZGVjaW4ifQ.tZHbMm_5mq4RTBCH70qaEofgBAytDPrytydw3i_wQHc
+Content-Type: application/json
+
+{
+  "id_consultation": 1
+}
+
+###
+#-----------------modify consultations---------------
+PUT  http://127.0.0.1:8000/app/consultations/modify/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NTA1ODUzLCJpYXQiOjE3MzU1MDU1NTMsImp0aSI6ImM3ZDE2MTk2OTU0YTRiODY4NmYzMzJiM2NlYmJmYTNjIiwidXNlcl9pZCI6NCwicm9sZSI6Im1lZGVjaW4ifQ.tZHbMm_5mq4RTBCH70qaEofgBAytDPrytydw3i_wQHc
+Content-Type: application/json
+
+{
+  "id_consultation": 3,
+  "resume":{
+    "text": "hola amigos here is consultation text",
+    "antecedents": [
+      "Diabetes",
+      "Appendectomy",
+      "Peanut Allergy"
+    ]
+  }
+}
+
+###
 #-----------------add resume---------------
 POST http://127.0.0.1:8000/app/add_resume/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NDcwMTgzLCJpYXQiOjE3MzU0Njk4ODMsImp0aSI6ImI2MmU4NTA3NGQ5YzRiZWNhNGVlMDllODQyOTZjYWYwIiwidXNlcl9pZCI6NCwicm9sZSI6Im1lZGVjaW4ifQ.u3nAslO6Ade1d6uRj6BIB3FmRp3yhz26DLsI75rP8oE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NTA1ODUzLCJpYXQiOjE3MzU1MDU1NTMsImp0aSI6ImM3ZDE2MTk2OTU0YTRiODY4NmYzMzJiM2NlYmJmYTNjIiwidXNlcl9pZCI6NCwicm9sZSI6Im1lZGVjaW4ifQ.tZHbMm_5mq4RTBCH70qaEofgBAytDPrytydw3i_wQHc
 Content-Type: application/json
 
 {
   "text": "hola amigos here is consultation text",
-  "consultation": 1,
+  "consultation": 3,
   "antecedents": [
     "Diabetes",
     "Appendectomy",
@@ -305,7 +340,29 @@ Content-Type: application/json
 ###
 #-----------------list resume---------------
 POST http://127.0.0.1:8000/app/resumes/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NDcwMTgzLCJpYXQiOjE3MzU0Njk4ODMsImp0aSI6ImI2MmU4NTA3NGQ5YzRiZWNhNGVlMDllODQyOTZjYWYwIiwidXNlcl9pZCI6NCwicm9sZSI6Im1lZGVjaW4ifQ.u3nAslO6Ade1d6uRj6BIB3FmRp3yhz26DLsI75rP8oE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NTA1ODUzLCJpYXQiOjE3MzU1MDU1NTMsImp0aSI6ImM3ZDE2MTk2OTU0YTRiODY4NmYzMzJiM2NlYmJmYTNjIiwidXNlcl9pZCI6NCwicm9sZSI6Im1lZGVjaW4ifQ.tZHbMm_5mq4RTBCH70qaEofgBAytDPrytydw3i_wQHc
+Content-Type: application/json
+
+{
+  "consultation": 1
+}
+
+###
+#-----------------add examen consultation---------------
+POST http://127.0.0.1:8000/app/consultations/add_examen_consultation/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NTA1ODUzLCJpYXQiOjE3MzU1MDU1NTMsImp0aSI6ImM3ZDE2MTk2OTU0YTRiODY4NmYzMzJiM2NlYmJmYTNjIiwidXNlcl9pZCI6NCwicm9sZSI6Im1lZGVjaW4ifQ.tZHbMm_5mq4RTBCH70qaEofgBAytDPrytydw3i_wQHc
+Content-Type: application/json
+
+{
+  "consultation": 1,
+  "description": "hola amigos this is examen consultation description",
+  "outils": "OXYMETRE"
+}
+
+###
+#-----------------list examen consultation---------------
+POST http://127.0.0.1:8000/app/examen_consultation/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NTA1ODUzLCJpYXQiOjE3MzU1MDU1NTMsImp0aSI6ImM3ZDE2MTk2OTU0YTRiODY4NmYzMzJiM2NlYmJmYTNjIiwidXNlcl9pZCI6NCwicm9sZSI6Im1lZGVjaW4ifQ.tZHbMm_5mq4RTBCH70qaEofgBAytDPrytydw3i_wQHc
 Content-Type: application/json
 
 {
