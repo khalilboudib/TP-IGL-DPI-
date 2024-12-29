@@ -1,6 +1,7 @@
 from django.db import models
 from datetime import datetime
 
+
 class TypeRadio(models.TextChoices):
     IRM = 'IRM'
     ECHOGRAPHIE = 'ECHOGRAPHIE'
@@ -65,75 +66,76 @@ class Medicament(models.Model):
     nom_medicament = models.CharField(max_length=100)
     dose = models.CharField(max_length=50)
     duree_traitement = models.CharField(max_length=50)
+    ordannance = models.ForeignKey("app.Ordonnance", on_delete=models.SET_NULL, null=True, related_name="medicaments")
 
 class Ordonnance(models.Model):
     id_ordonnance = models.AutoField(primary_key=True)
-    date_creation = models.DateField(default=datetime.now)
+    date_creation = models.DateTimeField(default=datetime.now)
     validated = models.TextField(choices=StatutValidationOrdonnance.choices)
-    medicaments = models.ForeignKey(Medicament, on_delete=models.SET_NULL, null=True)
-
-class Examen_Consultation(models.Model):
-    id_examen_consultation = models.AutoField(primary_key=True)
-    outils = models.CharField(max_length=20, choices=Outils.choices)
-    description = models.TextField()
+    diagnostic = models.OneToOneField("app.Diagnostic", on_delete=models.SET_NULL, null=True, related_name="ordonnance")
 
 class Resume(models.Model):
     id_resume = models.AutoField(primary_key=True)
     text = models.TextField()
     antecedents = models.JSONField(default=list)
+    consultation = models.OneToOneField("app.Consultation", on_delete=models.SET_NULL, null=True, related_name="resume")
+
+class Diagnostic(models.Model):
+    id_diagnostic = models.AutoField(primary_key=True)
+    dpi = models.ForeignKey("app.dpi", on_delete=models.SET_NULL, null=True, related_name="diagnostics")
+    diagnostic = models.TextField()
+    date_creation = models.DateTimeField(default=datetime.now)
+    #medecin = models.OneToOneField("app.Medecin", on_delete=models.SET_NULL, null=True)
 
 class Consultation(models.Model):
     id_consultation = models.AutoField(primary_key=True)
-    date_consultation = models.DateTimeField()
-    resume_consultation = models.OneToOneField(Resume, on_delete=models.SET_NULL, null=True)
-    examen_consultation = models.ForeignKey(Examen_Consultation, on_delete=models.SET_NULL, null=True)
+    diagnostic = models.ForeignKey(Diagnostic, on_delete=models.SET_NULL, null=True, related_name="consultations")
+    date_consultation = models.DateTimeField(default=datetime.now)
 
-class Resultat_Biologique(models.Model):
-    id_resultat = models.AutoField(primary_key=True)
-    parametre = models.TextField(choices=Parametre_biologique.choices)
-    valeur = models.FloatField()
-    unite = models.CharField(max_length=20)
+class Examen_Consultation(models.Model):
+    id_examen_consultation = models.AutoField(primary_key=True)
+    outils = models.CharField(max_length=20, choices=Outils.choices)
+    description = models.TextField()
+    consultation = models.ForeignKey(Consultation, on_delete=models.SET_NULL, null=True, related_name="examens_consultations")
 
 class Bilan_Biologique(models.Model):
     id_bilan_biologique = models.AutoField(primary_key=True)
     date_bilan = models.DateTimeField(default=datetime.now)
-    laboratoire = models.OneToOneField("app.Laboratoire", on_delete=models.SET_NULL, null=True)
-    resultats = models.ForeignKey(Resultat_Biologique, on_delete=models.SET_NULL, null=True)
+    examen_complementaire = models.OneToOneField("app.Examen_Complementaire", on_delete=models.SET_NULL, null=True, related_name="bilan_biologique")
+    #laboratoire = models.OneToOneField("app.Laboratoire", on_delete=models.SET_NULL, null=True)
+
+class Resultat_Biologique(models.Model):
+    id_resultat = models.AutoField(primary_key=True)
+    bilan_biologique = models.ForeignKey(Bilan_Biologique, on_delete=models.SET_NULL, null=True, related_name="resultats_biologiques")
+    parametre = models.TextField(choices=Parametre_biologique.choices)
+    valeur = models.FloatField()
+    unite = models.CharField(max_length=20)
 
 class ImageMedicale(models.Model):
     id_image = models.AutoField(primary_key=True)
     chemin_fichier = models.CharField(max_length=255)
-
-class Examen_Radiologique(models.Model):
-    id_examen = models.AutoField(primary_key=True)
-    resultat = models.OneToOneField(ImageMedicale, on_delete=models.SET_NULL, null=True)
-    date_examen = models.DateField()
-    Radiologue = models.OneToOneField("app.Radiologue", on_delete=models.SET_NULL, null=True)
-    TypeRadio = models.TextField(choices=TypeRadio.choices)
+    examen_radiologique = models.OneToOneField("app.Examen_Radiologique", on_delete=models.SET_NULL, null=True, related_name="resultat")
 
 class Bilan_Radiologique(models.Model):
     id_bilan_radiologique = models.AutoField(primary_key=True)
     date_bilan = models.DateTimeField(default=datetime.now)
-    examens = models.ForeignKey(Examen_Radiologique, on_delete=models.SET_NULL, null=True)
+    examen_complementaire = models.OneToOneField("app.Examen_Complementaire", on_delete=models.SET_NULL, null=True, related_name="bilan_radiologique")
+
+class Examen_Radiologique(models.Model):
+    id_examen = models.AutoField(primary_key=True)
+    date_examen = models.DateTimeField(default=datetime.now)
+    #Radiologue = models.OneToOneField("app.Radiologue", on_delete=models.SET_NULL, null=True)
+    TypeRadio = models.TextField(choices=TypeRadio.choices)
+    bilan_radiologique = models.ForeignKey(Bilan_Radiologique, on_delete=models.SET_NULL, null=True, related_name="examen_radiologiques")
 
 class Examen_Complementaire(models.Model):
     id_examen_complementaire = models.AutoField(primary_key=True)
+    diagnostic = models.ForeignKey(Diagnostic, on_delete=models.SET_NULL, null=True, related_name="examen_Complementaires")
     description = models.TextField()
-    bilan_Biologique = models.OneToOneField(Bilan_Biologique, on_delete=models.SET_NULL, null=True)
-    bilan_Radiologique = models.OneToOneField(Bilan_Radiologique, on_delete=models.SET_NULL, null=True)
     
-
-class Diagnostic(models.Model):
-    id_diagnostic = models.AutoField(primary_key=True)
-    diagnostic = models.TextField()
-    date_creation = models.DateTimeField(default=datetime.now)
-    medecin = models.OneToOneField("app.Medecin", on_delete=models.SET_NULL, null=True)
-    consultations = models.ForeignKey(Consultation, on_delete=models.SET_NULL, null=True)
-    ordanance = models.OneToOneField(Ordonnance, on_delete=models.SET_NULL, null=True)
-    examen_Complementaire = models.ForeignKey(Examen_Complementaire, on_delete=models.SET_NULL, null=True)
-
 class Compte_Rendu(models.Model):
     id_compte_rendu = models.AutoField(primary_key=True)
+    dpi = models.ForeignKey("app.dpi", on_delete=models.SET_NULL, null=True, related_name="compte_rendus")
     date_creation = models.DateTimeField(default=datetime.now)
     radiologue = models.OneToOneField("app.Radiologue", on_delete=models.SET_NULL, null=True)
     texte = models.TextField()
@@ -141,6 +143,7 @@ class Compte_Rendu(models.Model):
 
 class CertificatMedical(models.Model):
     id_certificat = models.AutoField(primary_key=True)
+    dpi = models.ForeignKey("app.dpi", on_delete=models.SET_NULL, null=True, related_name="certificats")
     medecin = models.OneToOneField("app.Medecin", on_delete=models.SET_NULL, null=True)
     date_emission = models.DateTimeField()
     date_debut_validite = models.DateField()
@@ -159,13 +162,14 @@ class Decompte_des_frais(models.Model):
     montant_rembourse = models.FloatField()
     montant_a_payer = models.FloatField()
     admin = models.OneToOneField("app.admin", on_delete=models.SET_NULL, null=True)
+    hospitalisation = models.ForeignKey("app.Hospitalisation", on_delete=models.SET_NULL, null=True, related_name="decompte")
 
 class Hospitalisation(models.Model):
     id_hospitalisation = models.AutoField(primary_key=True)
+    dpi = models.ForeignKey("app.dpi", on_delete=models.SET_NULL, null=True, related_name="hospitalisations")
     date_entree = models.DateField()
     date_sortie = models.DateField()
     nbr_chamisation = models.IntegerField()
     etablissement_hospitalier = models.CharField(max_length=100)
-    decompte_des_frais = models.OneToOneField(Decompte_des_frais, on_delete=models.SET_NULL, null=True)
 
 

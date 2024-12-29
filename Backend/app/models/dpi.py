@@ -18,5 +18,6 @@ class DPI(models.Model):
     medecin_traitant = models.ForeignKey(Medecin, on_delete=models.SET_NULL, null=True, related_name='dpis')
     
     
+        
     
     

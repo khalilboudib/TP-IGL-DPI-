@@ -5,6 +5,7 @@ class UtilisateurSerializer(serializers.ModelSerializer):
     class Meta:
         model = Utilisateur
         fields = '__all__'
+        extra_kwargs = {'username': {'required': False}}
 
 class MedecinSerializer(serializers.ModelSerializer):
     class Meta:
@@ -90,6 +91,10 @@ class DiagnosticSerializer(serializers.ModelSerializer):
     class Meta:
         model = Diagnostic
         fields = '__all__'
+        extra_kwargs = {
+            'Diagnostic': {'required': False},
+            'ordanance': {'required': False},
+            }
 
 class Compte_RenduSerializer(serializers.ModelSerializer):
     class Meta:
