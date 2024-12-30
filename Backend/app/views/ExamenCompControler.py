@@ -96,7 +96,7 @@ def ajout_Bilan_Biologique(request):
         return Response({"detail": "Logged-in user is not associated with a laboratoire profile"}, status=403)
     
     bilan_biologique = request.data
-    bilan_biologique['laboratoire'] = laborantin.user.id
+    bilan_biologique['laboratoire'] = laborantin.id
     serializer = Bilan_BiologiqueSerializer(data=bilan_biologique)
     if serializer.is_valid():
         serializer.save()
@@ -132,7 +132,7 @@ class BilanBiologiqueListView(ListAPIView):
                 if islaborantin and request.user.role != "laborantin":
                      raise PermissionDenied("You must be a patient/medcin/radiologue/laboratoire to access this.")
     def post(self, request, *args, **kwargs):
-        self.check_object_permissions(request, isPatient, isLaborantin, isMedecin)
+        self.check_permissions(request, isPatient, isLaborantin, isMedecin)
         id_examen_complementaire = request.data.get('examen_complementaire')
         if not id_examen_complementaire:
             raise ValidationError({"error": "id_examen_complementaire is required"})
@@ -175,7 +175,7 @@ class ResultatBiologiqueListView(ListAPIView):
                 if islaborantin and request.user.role != "laborantin":
                      raise PermissionDenied("You must be a patient/medcin/radiologue/laboratoire to access this.")
     def post(self, request, *args, **kwargs):
-        self.check_object_permissions(request, isPatient, isLaborantin, isMedecin)
+        self.check_permissions(request, isPatient, isLaborantin, isMedecin)
         id_bilan_biologique = request.data.get('bilan_biologique')
         if not id_bilan_biologique:
             raise ValidationError({"error": "id_bilan_biologique is required"})
@@ -254,7 +254,7 @@ def ajout_examen_radiologique(request):
         return Response({"detail": "Logged-in user is not associated with a Radiologues profile"}, status=403)
     
     examen_radiologique = request.data
-    examen_radiologique['Radiologue'] = radiologue.user.id
+    examen_radiologique['Radiologue'] = radiologue.id
     serializer = Examen_RadiologiqueSerializer(data=examen_radiologique)
     if serializer.is_valid():
         serializer.save()

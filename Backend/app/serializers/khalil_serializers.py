@@ -81,7 +81,7 @@ class ImageMedicaleSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class Examen_RadiologiqueSerializer(serializers.ModelSerializer):
-    resultats = ImageMedicaleSerializer(many=True, read_only=True)
+    resultat = ImageMedicaleSerializer(read_only=True)
     class Meta:
         model = Examen_Radiologique
         fields = '__all__'

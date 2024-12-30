@@ -8,7 +8,7 @@ from app.views.dpi import AddDPIView, ListDPIsView
 from app.views.soins import AddSoinView, ListSoinsView
 from app.views.dpi import AddDPIView
 from app.views.soins import AddSoinView
-from app.views import DiagnosticControler, ConsultationControler, OrdananceControler, ExamenCompControler
+from app.views import DiagnosticControler, ConsultationControler, OrdananceControler, ExamenCompControler, Compte_renduControler, CertificatMedicalControler
 
 urlpatterns = [
     path('POST/', authentication.index_POST, name='index_POST'),
@@ -36,7 +36,9 @@ urlpatterns = [
     path('add_examen_comp/', ExamenCompControler.ajout_ExamenComplementaire , name="add_examen_comp"),
     path('add_examen_radio/', ExamenCompControler.ajout_examen_radiologique, name="bilan_bio"),
     path('add_resultat_radio/', ExamenCompControler.ajout_resultat_radiologique, name="resultat_radio"),
+    path('add_compte_rendu/', Compte_renduControler.crea_compte_rendu, name="add_compte_rendu"),
     path('consultations/add_examen_consultation/', ConsultationControler.ajout_examen_consultation, name="add_examen_consultation"),
+    path('create_certificat/', CertificatMedicalControler.crea_certificat, name="create_certificat_medical"),
     path('examen_comp/', ExamenCompControler.ExamenComplementaireListView.as_view(), name="examen_comp"),
     path('examen_comp/delete/', ExamenCompControler.ExamenComplementaireListView.as_view(), name="examen_comp"),
     path('examen_comp/modify/', ExamenCompControler.ExamenComplementaireListView.as_view(), name="examen_comp"),
@@ -73,5 +75,11 @@ urlpatterns = [
     path('examen_consultation/', ConsultationControler.ExamenConsultationListView.as_view(), name="examen_consultation"),
     path('examen_consultation/delete/', ConsultationControler.ExamenConsultationListView.as_view(), name="examen_consultation"),
     path('examen_consultation/modify/', ConsultationControler.ExamenConsultationListView.as_view(), name="examen_consultation"),
+    path('compte_rendu/', Compte_renduControler.Compte_RenduListView.as_view(), name="compte_rendu"),
+    path('compte_rendu/delete/', Compte_renduControler.Compte_RenduListView.as_view(), name="compte_rendu"),
+    path('compte_rendu/modify/', Compte_renduControler.Compte_RenduListView.as_view(), name="compte_rendu"),
+    path('certificat/', CertificatMedicalControler.CertificatMedicalListView.as_view(), name="certificat"),
+    path('certificat/delete/', CertificatMedicalControler.CertificatMedicalListView.as_view(), name="certificat"),
+    path('certificat/modify/', CertificatMedicalControler.CertificatMedicalListView.as_view(), name="certificat"),
 
 ]

@@ -33,7 +33,7 @@ def crea_Consultation(request):
         return Response({"detail": "Logged-in user is not associated with a Medecin profile"}, status=403)
     
     consultation = request.data
-    consultation['medecin'] = medecin.user.id
+    consultation['medecin'] = medecin.id
     serializer = ConsultationSerializer(data=consultation)
     if serializer.is_valid():
         serializer.save()
