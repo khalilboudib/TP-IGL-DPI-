@@ -1,7 +1,8 @@
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
-from app.models import Utilisateur, DPI
+from app.models import Utilisateur, DPI, Soin
 from django.contrib.auth.password_validation import validate_password
+from django.db import transaction
 
 # Nested serializer for DPI
 class DPISerializer(serializers.ModelSerializer):
@@ -13,13 +14,17 @@ class DPISerializer(serializers.ModelSerializer):
     mutuelle = serializers.CharField(max_length=100, required=True)
     contact_info = serializers.CharField(max_length=100, required=True)
 
+    # get medecin traitant by email address
+    medecin_traitant_email = serializers.EmailField()
+
     class Meta:
         model = DPI
-        fields = ('nss', 'mutuelle', 'contact_info')
+        fields = ('nss', 'mutuelle', 'contact_info', 'medecin_traitant_email')
+    
 
-# Main serializer
+
 class AddDPISerializer(serializers.ModelSerializer):
-    # Fields for Utilisateur
+    # Utilisateur
     email = serializers.EmailField(
         required=True,
         validators=[UniqueValidator(queryset=Utilisateur.objects.all())]
@@ -33,7 +38,7 @@ class AddDPISerializer(serializers.ModelSerializer):
         required=True,
         write_only=True,
     )
-    dpi_input = DPISerializer(write_only=True)  # Nested DPI serializer
+    dpi_input = DPISerializer(write_only=True)
 
     class Meta:
         model = Utilisateur
@@ -52,28 +57,36 @@ class AddDPISerializer(serializers.ModelSerializer):
         return attrs
 
     def create(self, validated_data):
-        # Extract DPI data
+        
         dpi_data = validated_data.pop('dpi_input')
+        with transaction.atomic():
+            user = Utilisateur.objects.create(
+                first_name=validated_data["first_name"],
+                last_name=validated_data["last_name"],
+                email=validated_data["email"],
+                phone=validated_data["phone"],
+                adresse=validated_data["adresse"],
+                role=validated_data["role"],
+            )
+            user.set_password(validated_data["password"])
+            
 
-        # Create user
-        user = Utilisateur.objects.create(
-            first_name=validated_data["first_name"],
-            last_name=validated_data["last_name"],
-            email=validated_data["email"],
-            phone=validated_data["phone"],
-            adresse=validated_data["adresse"],
-            role=validated_data["role"],
-        )
-        user.set_password(validated_data["password"])
-        user.save()
+            # getting the medecin by email
+            try:
+                medecin = Utilisateur.objects.get(email=dpi_data['medecin_traitant_email']).medecin_profile
+            except Utilisateur.DoesNotExist:
+                raise serializers.ValidationError("Medecin with this email doesn't exist")
 
-        # Create related DPI
-        DPI.objects.create(
-            nss=dpi_data['nss'],
-            mutuelle=dpi_data['mutuelle'],
-            contact_info=dpi_data['contact_info'],
-            user=user
-        )
+
+            dpi = DPI.objects.create(
+                nss=dpi_data['nss'],
+                mutuelle=dpi_data['mutuelle'],
+                contact_info=dpi_data['contact_info'],
+                medecin_traitant = medecin,
+                user=user
+            )
+            user.save()
+            dpi.save()
 
         return user
     
@@ -82,8 +95,20 @@ class ListUserSerializer(serializers.ModelSerializer):
         model = Utilisateur
         fields = ('first_name', 'last_name', 'email', 'phone', 'adresse', 'role')
 
+class ListSoinSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Soin
+        fields = '__all__'
+
 class ListDPIsSerializer(serializers.ModelSerializer):
     user = ListUserSerializer(read_only=True)
     class Meta:
         model = DPI
-        fields = ('user', 'nss', 'mutuelle', 'contact_info', 'date_creation')
+        fields = '__all__'
+
+class GetDPISerializer(serializers.ModelSerializer):
+    user = ListUserSerializer(read_only=True)
+    soins = ListSoinSerializer(many=True, read_only=True)
+    class Meta:
+        model = DPI
+        fields = '__all__'

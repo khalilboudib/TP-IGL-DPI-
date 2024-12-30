@@ -9,6 +9,9 @@ from app.views.soins import AddSoinView, ListSoinsView
 from app.views.dpi import AddDPIView
 from app.views.soins import AddSoinView
 from app.views import DiagnosticControler, ConsultationControler, OrdananceControler, ExamenCompControler, Compte_renduControler, CertificatMedicalControler
+from app.views.users import *
+from app.views.dpi import *
+from app.views.soins import *
 
 urlpatterns = [
     path('POST/', authentication.index_POST, name='index_POST'),
@@ -81,5 +84,7 @@ urlpatterns = [
     path('certificat/', CertificatMedicalControler.CertificatMedicalListView.as_view(), name="certificat"),
     path('certificat/delete/', CertificatMedicalControler.CertificatMedicalListView.as_view(), name="certificat"),
     path('certificat/modify/', CertificatMedicalControler.CertificatMedicalListView.as_view(), name="certificat"),
-
+    path('users/<int:pk>/', GetUserView.as_view(), name="get_user"),
+    path('dpi/<int:pk>/', GetDPIView.as_view(), name="get_dpi"),
+    path('soins/<int:pk>/', GetSoinView.as_view(), name="get_soin"),
 ]
