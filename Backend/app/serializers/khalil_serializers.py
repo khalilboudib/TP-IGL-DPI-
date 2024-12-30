@@ -38,6 +38,7 @@ class MedicamentSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class OrdonnanceSerializer(serializers.ModelSerializer):
+    medicaments = MedicamentSerializer(many=True, read_only=True)
     class Meta:
         model = Ordonnance
         fields = '__all__'
@@ -53,9 +54,15 @@ class ResumeSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class ConsultationSerializer(serializers.ModelSerializer):
+    resume = ResumeSerializer(read_only=True)  # Nested one-to-one relationship
+    examens_consultations = Examen_ConsultationSerializer(many=True, read_only=True)
     class Meta:
         model = Consultation
         fields = '__all__'
+        extra_kwargs = {
+            'medecin': {'required': False}
+            }
+
 
 class Resultat_BiologiqueSerializer(serializers.ModelSerializer):
     class Meta:
@@ -63,6 +70,7 @@ class Resultat_BiologiqueSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class Bilan_BiologiqueSerializer(serializers.ModelSerializer):
+    resultats_biologiques = Resultat_BiologiqueSerializer(many=True, read_only=True)
     class Meta:
         model = Bilan_Biologique
         fields = '__all__'
@@ -73,21 +81,28 @@ class ImageMedicaleSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class Examen_RadiologiqueSerializer(serializers.ModelSerializer):
+    resultat = ImageMedicaleSerializer(read_only=True)
     class Meta:
         model = Examen_Radiologique
         fields = '__all__'
 
 class Bilan_RadiologiqueSerializer(serializers.ModelSerializer):
+    examen_radiologiques = Examen_RadiologiqueSerializer(many=True, read_only=True)
     class Meta:
         model = Bilan_Radiologique
         fields = '__all__'
 
 class Examen_ComplementaireSerializer(serializers.ModelSerializer):
+    bilan_biologique = Bilan_BiologiqueSerializer(read_only=True)
+    bilan_radiologique = Bilan_RadiologiqueSerializer(read_only=True)
     class Meta:
         model = Examen_Complementaire
         fields = '__all__'
 
 class DiagnosticSerializer(serializers.ModelSerializer):
+    ordanance = OrdonnanceSerializer(read_only=True)
+    consultation = ConsultationSerializer(read_only=True)
+    Examen_Complementaire = Examen_ComplementaireSerializer(read_only=True)
     class Meta:
         model = Diagnostic
         fields = '__all__'
@@ -97,6 +112,7 @@ class DiagnosticSerializer(serializers.ModelSerializer):
             }
 
 class Compte_RenduSerializer(serializers.ModelSerializer):
+    examen_radiologiques = Examen_RadiologiqueSerializer(many=True, read_only=True)
     class Meta:
         model = Compte_Rendu
         fields = '__all__'
@@ -112,6 +128,7 @@ class Decompte_des_fraisSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class HospitalisationSerializer(serializers.ModelSerializer):
+    decompte = Decompte_des_fraisSerializer(read_only=True)
     class Meta:
         model = Hospitalisation
         fields = '__all__'
