@@ -29,6 +29,8 @@ interface DPI {
 
 export class DpiListComponent implements OnInit {
 
+  searchBarVisible = false;
+
   showSearchOptions: boolean = false;
   dpis: DPI[] = [];
   selectedDpi: DPI | null = null;
@@ -46,6 +48,19 @@ export class DpiListComponent implements OnInit {
     });
     //this.fetchPatientById(this.id);
   }
+
+
+  toggleSearchBar() {
+    this.searchBarVisible = !this.searchBarVisible;
+    const inputField = document.querySelector('.search-input') as HTMLElement;
+    if (this.searchBarVisible) {
+      inputField.classList.add('visible');
+    } else {
+      inputField.classList.remove('visible');
+    }
+  }
+
+
 
   searchByNSS(nss: string): void {
     const dpi = this.dpis.find((dpi) => dpi.patient?.NSS === nss);
@@ -103,4 +118,7 @@ export class DpiListComponent implements OnInit {
     });
   }
 
+  GoToDashBoard() {
+    this.router.navigate(['/dashboard']);
+  }
 }
