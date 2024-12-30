@@ -21,15 +21,36 @@ export class AddUserComponent {
       birthDate: [''],
       phone: ['', Validators.required],
       adresse: ['', Validators.required],
-      role: ['admin', Validators.required]
+      role: ['', Validators.required],
+      medecinTraitant: [''],
+      numeroSecuriteSocial: ['']
     });
+
+    // Watch for role changes
+    this.addUserForm.get('role')?.valueChanges.subscribe((role) => this.adjustFormFields(role));
+  }
+
+  adjustFormFields(role: string) {
+    const medecinTraitantControl = this.addUserForm.get('medecinTraitant');
+    const numeroSecuriteSocialControl = this.addUserForm.get('numeroSecuriteSocial');
+
+    if (role === 'patient') {
+      medecinTraitantControl?.setValidators(Validators.required);
+      numeroSecuriteSocialControl?.setValidators(Validators.required);
+    } else {
+      medecinTraitantControl?.clearValidators();
+      numeroSecuriteSocialControl?.clearValidators();
+    }
+
+    medecinTraitantControl?.updateValueAndValidity();
+    numeroSecuriteSocialControl?.updateValueAndValidity();
   }
 
   onSubmit() {
     if (this.addUserForm.valid) {
-      
-        console.log('User added')
-    
+      console.log('Form Data:', this.addUserForm.value);
+    } else {
+      console.error('Form is invalid');
     }
   }
 }
