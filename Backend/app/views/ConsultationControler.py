@@ -1,9 +1,9 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from app.serializers.khalil_serializers import ConsultationSerializer, ResumeSerializer, Examen_ConsultationSerializer
-from app.models import Consultation, Diagnostic,Resume, Examen_Consultation
+from app.models import *
 from rest_framework.generics import ListAPIView
-from rest_framework.exceptions import ValidationError
+from rest_framework.exceptions import ValidationError, PermissionDenied
 from django.shortcuts import get_object_or_404
 from rest_framework import status
 from app.permissions import *
@@ -27,7 +27,13 @@ def crea_Consultation(request):
     if not diagnostic_text:
         return Response("diagnostic is required", status=400)
     
+    try:
+        medecin = Medecin.objects.get(user=request.user)
+    except Medecin.DoesNotExist:
+        return Response({"detail": "Logged-in user is not associated with a Medecin profile"}, status=403)
+    
     consultation = request.data
+    consultation['medecin'] = medecin.user.id
     serializer = ConsultationSerializer(data=consultation)
     if serializer.is_valid():
         serializer.save()
@@ -36,6 +42,10 @@ def crea_Consultation(request):
 
 class ConsultationListView(ListAPIView):
     serializer_class = ConsultationSerializer
+    def check_permissions(self, request, is_patient=False, is_medecin=False):
+        if is_patient and request.user.role != "patient":
+            if is_medecin and request.user.role != "medecin":
+               raise PermissionDenied("You must be a patient/medcin to access this.")
 
     def get_queryset(self):
         diagnostic_id = self.request.query_params.get('diagnostic')
@@ -102,6 +112,10 @@ def ajout_resume(request):
 
 class ResumeListView(ListAPIView):
     serializer_class = ResumeSerializer
+    def check_permissions(self, request, is_patient=False, is_medecin=False):
+        if is_patient and request.user.role != "patient":
+            if is_medecin and request.user.role != "medecin":
+               raise PermissionDenied("You must be a patient/medcin to access this.")
     def post(self, request, *args, **kwargs):
         self.check_permissions(request, isPatient, isMedecin)
         id_consultation = request.data.get('consultation')
@@ -163,6 +177,10 @@ def ajout_examen_consultation(request):
 
 class ExamenConsultationListView(ListAPIView):
     serializer_class = Examen_ConsultationSerializer
+    def check_permissions(self, request, is_patient=False, is_medecin=False):
+        if is_patient and request.user.role != "patient":
+            if is_medecin and request.user.role != "medecin":
+               raise PermissionDenied("You must be a patient/medcin to access this.")
     def post(self, request, *args, **kwargs):
         self.check_permissions(request, isPatient, isMedecin)
         id_consultation = request.data.get('consultation')

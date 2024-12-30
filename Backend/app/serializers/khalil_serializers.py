@@ -59,6 +59,10 @@ class ConsultationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Consultation
         fields = '__all__'
+        extra_kwargs = {
+            'medecin': {'required': False}
+            }
+
 
 class Resultat_BiologiqueSerializer(serializers.ModelSerializer):
     class Meta:
