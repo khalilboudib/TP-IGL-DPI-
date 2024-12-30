@@ -15,7 +15,6 @@ class AddSoinSerializer(serializers.ModelSerializer):
         fields = [
             "soin_infirmier",
             "observation_patient",
-            "infirmier",
             "dpi",
             "admin_medicament_input"
         ]
@@ -42,18 +41,10 @@ class AddSoinSerializer(serializers.ModelSerializer):
 class ListAdminMedicament(serializers.ModelSerializer):
     class Meta:
         model = AdminMedicament
-        fields = [
-            "advice",
-        ]
+        fields = '__all__'
 class ListSoinsSerializer(serializers.ModelSerializer):
-    
     admin_medicament = ListAdminMedicament(many=True, read_only=True)
     class Meta:
         model = Soin
-        fields = [
-            "soin_infirmier",
-            "observation_patient",
-            "infirmier",
-            "dpi",
-            "admin_medicament"
-        ]
+        fields = '__all__'
+

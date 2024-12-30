@@ -10,13 +10,12 @@ Content-Type: application/json
 ###
 # -------------------- create soin -----------------
 POST http://127.0.0.1:8000/app/soins/add/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1MjI1ODY2LCJpYXQiOjE3MzUyMjU1NjYsImp0aSI6ImEyMThhYTA0OTFmODQ1MmU5OTQwYjA0ZWFlNzQyMzNjIiwidXNlcl9pZCI6MTQsInJvbGUiOiJpbmZpcm1pZXIifQ.hPviYGbsYVww2gthemzBEOEi_G8LXu_2lTalBe_DWFs
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NDcwMjIwLCJpYXQiOjE3MzU0NjY2MjAsImp0aSI6IjYxZjVkNDQ0MTVkNzQ3ZjM4ODFhYWMzMmMzZDk0ZGM4IiwidXNlcl9pZCI6MTQsInJvbGUiOiJpbmZpcm1pZXIifQ.-tV-Dd9atPS9VqTVE0hTZ_dg6p-O7APws84yGcRwY-w
 Content-Type: application/json
 
 {
   "soin_infirmier":"i",
   "observation_patient":"this is observation",
-  "infirmier":1,
   "dpi":7,
   "admin_medicament_input":{
     "advice":"this is advice how to take medicament"
@@ -32,16 +31,17 @@ Content-Type: application/json
 {
     "first_name": "patient",
     "last_name": "patient",
-    "email": "patient24@gmail.com",
+    "email": "patient36@gmail.com",
     "password": "bndbndbnd",
     "password2": "bndbndbnd",
     "phone": "bnd",
     "adresse": "bnd",
     "role": "patient",
     "dpi_input": {
-        "nss": "patient24_nss",
+        "nss": "patient36_nss",
         "mutuelle": "HealthCare",
-        "contact_info": "contact@example.com"
+        "contact_info": "contact@example.com",
+        "medecin_traitant_email": "medecin@gmail.com"
     }
 }
 
@@ -315,7 +315,7 @@ Content-Type: application/json
 ###
 # ---------------- list soins -------------------
 GET http://127.0.0.1:8000/app/soins/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1Mjk1NDU5LCJpYXQiOjE3MzUyOTUxNTksImp0aSI6IjZkMzI5MzlkNjQyNTRiZTFiNzEyNzJiNWVjZjhlYTZmIiwidXNlcl9pZCI6MTcsInJvbGUiOiJpbmZpcm1pZXIifQ.kXPi-qyShZHQRMoPTnojswmIHFOdBTaXR1tMt0gCa9Y
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NDcwMjIwLCJpYXQiOjE3MzU0NjY2MjAsImp0aSI6IjYxZjVkNDQ0MTVkNzQ3ZjM4ODFhYWMzMmMzZDk0ZGM4IiwidXNlcl9pZCI6MTQsInJvbGUiOiJpbmZpcm1pZXIifQ.-tV-Dd9atPS9VqTVE0hTZ_dg6p-O7APws84yGcRwY-w
 Content-Type: application/json
 
 ###
@@ -327,5 +327,23 @@ Content-Type: application/json
 ###
 # ---------------- list dpis -------------------
 GET http://127.0.0.1:8000/app/dpi/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1Mjk2OTg4LCJpYXQiOjE3MzUyOTY2ODgsImp0aSI6IjFmZTAxNGRhYzdmMjQ0MGNhMzY4ZDY2YzFmMmNkNGI1IiwidXNlcl9pZCI6MSwicm9sZSI6ImFkbWluIn0.3yVk9d-nAZHNkGHk1vMOS1pO21VDefpZjP7adBf7y_0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NDc0MzUyLCJpYXQiOjE3MzU0NzA3NTIsImp0aSI6IjVkYWU3YzU0NTZjODQ2M2ZiZDRlNGZiNTcyZTk5ZjYzIiwidXNlcl9pZCI6MTQsInJvbGUiOiJpbmZpcm1pZXIifQ.dgo0U-MoPCen4jkF2FfteIZwEnKhZBT5lhyA9amXUig
+Content-Type: application/json
+
+###
+# ---------------- get specific user -------------------
+GET http://127.0.0.1:8000/app/users/28/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NDc0MzUyLCJpYXQiOjE3MzU0NzA3NTIsImp0aSI6IjVkYWU3YzU0NTZjODQ2M2ZiZDRlNGZiNTcyZTk5ZjYzIiwidXNlcl9pZCI6MTQsInJvbGUiOiJpbmZpcm1pZXIifQ.dgo0U-MoPCen4jkF2FfteIZwEnKhZBT5lhyA9amXUig
+Content-Type: application/json
+
+###
+# ---------------- get specific dpi -------------------
+GET http://127.0.0.1:8000/app/dpi/28/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NDcwMjIwLCJpYXQiOjE3MzU0NjY2MjAsImp0aSI6IjYxZjVkNDQ0MTVkNzQ3ZjM4ODFhYWMzMmMzZDk0ZGM4IiwidXNlcl9pZCI6MTQsInJvbGUiOiJpbmZpcm1pZXIifQ.-tV-Dd9atPS9VqTVE0hTZ_dg6p-O7APws84yGcRwY-w
+Content-Type: application/json
+
+###
+# ---------------- get specific soin -------------------
+GET http://127.0.0.1:8000/app/soins/1/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NDc1MjE4LCJpYXQiOjE3MzU0NzE2MTgsImp0aSI6ImRlZTgwZjRlZDY5NTRlYjI5ZjNhYjk0NTA0NTNjMTA2IiwidXNlcl9pZCI6MTQsInJvbGUiOiJpbmZpcm1pZXIifQ.fYDWWmPukb5cP2oHdWopCqSEUaZtS_GPX0bbQkiuAkc
 Content-Type: application/json

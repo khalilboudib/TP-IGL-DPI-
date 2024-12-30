@@ -3,11 +3,9 @@ from django.urls import path
 from app.views import authentication
 from app.views.login import CustomTokenObtainPairView
 from app.views.admin import AdminView
-from app.views.users import RegisterView, ListUsersView
-from app.views.dpi import AddDPIView, ListDPIsView
-from app.views.soins import AddSoinView, ListSoinsView
-from app.views.dpi import AddDPIView
-from app.views.soins import AddSoinView
+from app.views.users import *
+from app.views.dpi import *
+from app.views.soins import *
 from app.views import DiagnosticControler, ConsultationControler, OrdananceControler, ExamenCompControler
 
 urlpatterns = [
@@ -47,4 +45,7 @@ urlpatterns = [
     path('resultats_bio/', ExamenCompControler.ResultatBiologiqueListView.as_view(), name="resultats_bio"),
     path('resultats_radio/', ExamenCompControler.ResultatRadiologiqueListView.as_view(), name="resultats_radio"),
     path('examens_radio/', ExamenCompControler.ExamenRadiologiqueListView.as_view(), name="examens_radio"),
+    path('users/<int:pk>/', GetUserView.as_view(), name="get_user"),
+    path('dpi/<int:pk>/', GetDPIView.as_view(), name="get_dpi"),
+    path('soins/<int:pk>/', GetSoinView.as_view(), name="get_soin"),
 ]
