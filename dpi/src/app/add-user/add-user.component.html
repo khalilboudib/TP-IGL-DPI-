@@ -1,6 +1,17 @@
 <form [formGroup]="addUserForm" (ngSubmit)="onSubmit()" class="user-form">
-  <h2>Add New User</h2>
+  <h2>Add User</h2>
   <div class="form-group">
+      <!-- Fields displayed only for "patient" role -->
+  <div *ngIf="addUserForm.get('role')?.value === 'patient'">
+    <div class="form-group">
+      <label for="numeroSecuriteSocial">Numero de Securite Social:</label>
+      <input id="numeroSecuriteSocial" formControlName="numeroSecuriteSocial" type="text" placeholder="Enter numero de securite social">
+    </div>
+    <div class="form-group">
+      <label for="medecinTraitant">Medecin Traitant:</label>
+      <input id="medecinTraitant" formControlName="medecinTraitant" type="text" placeholder="Enter medecin traitant">
+    </div>
+  </div>
     <label for="email">Email:</label>
     <input id="email" formControlName="email" type="email" placeholder="Enter email">
   </div>
@@ -28,7 +39,7 @@
     <label for="role">Role:</label>
     <select id="role" formControlName="role">
       <option value="" disabled selected>Select a role</option>
-      <option value="admin">Admin</option>
+      <option value="admin">Administrative</option>
       <option value="patient">Patient</option>
       <option value="medecin">Medecin</option>
       <option value="infirmier">Infirmier</option>
@@ -36,5 +47,8 @@
       <option value="laborantin">Laborantin</option>
     </select>
   </div>
+
+
+
   <button type="submit" class="submit-button">Add User</button>
 </form>
