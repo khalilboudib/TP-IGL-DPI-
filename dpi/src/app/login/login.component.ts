@@ -25,6 +25,7 @@ export class LoginComponent {
       next: (response: any) => {
         // Handle successful login
         const token = response.token; // Assuming the backend returns a field `token`
+        localStorage.setItem('token', token);
         const userType = token.role; // Assuming the backend returns a field `role` in token
         const userId = token.id; // Assuming the backend returns a field `id` in token
         if (userType === 'admin') {
