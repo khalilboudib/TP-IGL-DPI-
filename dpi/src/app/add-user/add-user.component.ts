@@ -23,7 +23,8 @@ export class AddUserComponent {
       adresse: ['', Validators.required],
       role: ['', Validators.required],
       medecinTraitant: [''],
-      numeroSecuriteSocial: ['']
+      numeroSecuriteSocial: [''],
+      mutuelle: ['']
     });
 
     // Watch for role changes
@@ -33,17 +34,20 @@ export class AddUserComponent {
   adjustFormFields(role: string) {
     const medecinTraitantControl = this.addUserForm.get('medecinTraitant');
     const numeroSecuriteSocialControl = this.addUserForm.get('numeroSecuriteSocial');
-
+    const mutuelle = this.addUserForm.get('mutulle');
     if (role === 'patient') {
       medecinTraitantControl?.setValidators(Validators.required);
       numeroSecuriteSocialControl?.setValidators(Validators.required);
+      mutuelle?.setValidators(Validators.required);
     } else {
       medecinTraitantControl?.clearValidators();
       numeroSecuriteSocialControl?.clearValidators();
+      mutuelle?.clearValidators();
     }
 
     medecinTraitantControl?.updateValueAndValidity();
     numeroSecuriteSocialControl?.updateValueAndValidity();
+    mutuelle?.updateValueAndValidity();
   }
 
   onSubmit() {
