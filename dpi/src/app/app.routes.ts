@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 export const routes: Routes = [
     { path: 'login', loadComponent: () => import('./login/login.component').then(m => m.LoginComponent) },
     { path: 'home', loadComponent: () => import('./home/home.component').then(m => m.HomeComponent) },
-    { path: 'patient', loadComponent: () => import('./patient/patient.component').then(m => m.PatientComponent) },
+    { path: 'patient/:id', loadComponent: () => import('./patient/patient.component').then(m => m.PatientComponent) },
     { path: 'add-user', loadComponent: () => import('./add-user/add-user.component').then(m => m.AddUserComponent) },
     { path: 'dashboard', loadComponent: () => import('./admin-dashboard/admin-dashboard.component').then(m => m.AdminDashboardComponent) },
     { path: 'profil', loadComponent: () => import('./admin-profil/admin-profil.component').then(m => m.AdminProfilComponent) },

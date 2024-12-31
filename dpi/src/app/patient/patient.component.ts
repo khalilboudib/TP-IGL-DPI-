@@ -1,48 +1,28 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms'; 
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { DataService } from '../data.service';
 @Component({
   selector: 'app-patient',
   templateUrl: './patient.component.html',
   imports: [FormsModule, CommonModule, HttpClientModule],
   styleUrls: ['./patient.component.css']
 })
-export class PatientComponent {
+export class PatientComponent implements OnInit {
 
   view: string = 'actions';
 
-  
+  bilansBiologique = Array<{title: string, details: string}>();
+  bilansRadio = Array<{title: string, details: string}>();
+  soins = Array<{title: string, details: string}>();
+  consultations = Array<{title: string, details: string}>();
+  diagnostiques = Array<{title: string, details: string}>();
   patient: any = null;
-  fetchedPatients: any[] = [];
-  id: string = '2';
+  id: string = '';
 
-  constructor(private router: Router, private http: HttpClient) {}
-
-  bilansBiologique = [
-    { title: 'Bilan Biologique 1', details: 'Details of Bilan Biologique 1' },
-    { title: 'Bilan Biologique 2', details: 'Details of Bilan Biologique 2' }
-  ];
-
-  bilansRadio = [
-    { title: 'Bilan Radio 1', details: 'Details of Bilan Radio 1' },
-    { title: 'Bilan Radio 2', details: 'Details of Bilan Radio 2' }
-  ];
-
-  soins = [
-    { title: 'Soin 1', details: 'Details of Soin 1' },
-    { title: 'Soin 2', details: 'Details of Soin 2' }
-  ];
-  consultations = [
-    { title: 'Consultation 1', details: 'Details of Consultation 1' },
-    { title: 'Consultation 2', details: 'Details of Consultation 2' }
-  ];
-
-  diagnostiques = [
-    { title: 'Diagnostique 1', details: 'Details of Diagnostique 1' },
-    { title: 'Diagnostique 2', details: 'Details of Diagnostique 2' }
-  ];
+  
   stat = {
     consultations: this.consultations.length,
     diagnostiques: this.diagnostiques.length,
@@ -50,9 +30,17 @@ export class PatientComponent {
     bilansRadio: this.bilansRadio.length,
     soins: this.soins.length
   };
+  constructor(private router: Router, private http: HttpClient, private route : ActivatedRoute, private dataService : DataService) {}
+
 
 
   ngOnInit(): void {
+    // Access the 'id' from the route parameters
+    this.route.params.subscribe(params => {
+      this.id = params['id'];  // Retrieve the 'id' from the route
+      console.log('Patient ID:', this.id);  // You can now use the 'id' in your component
+    });
+
     this.fetchPatientById(this.id);
   }
   navigateTo(page: string) {
@@ -71,14 +59,13 @@ export class PatientComponent {
 
   //Mock API call to fetch a single patient by ID
   fetchPatientById(id: string) {
-    const apiUrl = `https://6766e47c560fbd14f18c6ca2.mockapi.io/patient`;
-    this.http.get<any>(`${apiUrl}/${id}`).subscribe({
-      next: (data) => {
-        this.patient = data;
-        console.log('Fetched Patient:', data);
+    this.dataService.getData(`users/${id}`).subscribe({
+      next: (response: any) => {
+        this.patient = response;
       },
-      error: (err) => {
-        console.error('Error fetching patient:', err);
+      error: (error: any) => {
+        console.error(error);
+        alert('Error fetching patient data');
       }
     });
   }
