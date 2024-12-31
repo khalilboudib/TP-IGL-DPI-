@@ -28,7 +28,7 @@ export class LoginComponent {
         const userType = token.role; // Assuming the backend returns a field `role` in token
         const userId = token.id; // Assuming the backend returns a field `id` in token
         if (userType === 'admin') {
-          this.router.navigate(['/admin-dashboard' + userId]);
+          this.router.navigate(['/dashboard' + userId]);
         } else if (userType === 'patient') {
           this.router.navigate(['/patient/' + userId]);
         } else if(userType === 'medecin'){
