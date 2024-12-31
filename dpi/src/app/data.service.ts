@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root',
 })
@@ -23,16 +24,5 @@ export class DataService {
   // Generic DELETE request
   deleteData(endpoint: string, id: string | number): Observable<any> {
     return this.http.delete<any>(`${this.baseUrl}/${endpoint}/${id}`);
-  }
-
-  // Methods for specific data models
-
-  // DPI
-  getDPI(id: number): Observable<DPI> {
-    return this.getData(`dpi/${id}`);
-  }
-
-  getDPIs(): Observable<DPI[]> {
-    return this.getData('dpi');
   }
 }
