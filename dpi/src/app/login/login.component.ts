@@ -25,6 +25,7 @@ export class LoginComponent {
       next: (response: any) => {
         // Handle successful login
         const token = response.token; // Assuming the backend returns a field `token`
+        localStorage.setItem('token', token);
         const userType = token.role; // Assuming the backend returns a field `role` in token
         const userId = token.id; // Assuming the backend returns a field `id` in token
         if (userType === 'admin') {
@@ -53,9 +54,17 @@ export class LoginComponent {
 
         //This is a temporary solution
         if (this.username === 'admin' && this.password === 'admin') {
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/dashboard/0']);
         } else if(this.username === 'patient' && this.password === 'patient'){
-          this.router.navigate(['/patient']);
+          this.router.navigate(['/patient/0']);
+        } else if(this.username === 'medecin' && this.password === 'medecin'){
+          this.router.navigate(['/medecin/0']);
+        } else if(this.username === 'infirmier' && this.password === 'infirmier'){
+          this.router.navigate(['/infirmier/0']);
+        } else if(this.username === 'radiologue' && this.password === 'radiologue'){  
+          this.router.navigate(['/radiologue/0']);
+        } else if(this.username === 'laborantin' && this.password === 'laborantin'){
+          this.router.navigate(['/laborantin/0']);
         } else {
           alert('Invalid credentials');
         }
