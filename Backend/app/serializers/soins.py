@@ -17,7 +17,7 @@ class AddSoinSerializer(serializers.ModelSerializer):
             "observation_patient",
             "dpi",
             "admin_medicament_input"
-        ]
+        ]   
 
     def create(self, validated_data):
         

@@ -87,4 +87,5 @@ urlpatterns = [
     path('users/<int:pk>/', GetUserView.as_view(), name="get_user"),
     path('dpi/<int:pk>/', GetDPIView.as_view(), name="get_dpi"),
     path('soins/<int:pk>/', GetSoinView.as_view(), name="get_soin"),
+    path('dpi/search/', SearchDPIView.as_view(), name="search_dpi"),
 ]
