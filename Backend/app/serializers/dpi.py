@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 from app.models import Utilisateur, DPI, Soin
+from app.serializers.khalil_serializers import DiagnosticSerializer
 from django.contrib.auth.password_validation import validate_password
 from django.db import transaction
 
@@ -109,6 +110,7 @@ class ListDPIsSerializer(serializers.ModelSerializer):
 class GetDPISerializer(serializers.ModelSerializer):
     user = ListUserSerializer(read_only=True)
     soins = ListSoinSerializer(many=True, read_only=True)
+    diagnostics = DiagnosticSerializer(many=True)
     class Meta:
         model = DPI
         fields = '__all__'

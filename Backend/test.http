@@ -3,20 +3,20 @@ POST http://127.0.0.1:8000/app/login/
 Content-Type: application/json
 
 {
-    "email":"medecin@gmail.com",
+    "email":"infirmier@gmail.com",
     "password":"bndbndbnd"
 }
 
 ###
 # -------------------- create soin -----------------
 POST http://127.0.0.1:8000/app/soins/add/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NDcwMjIwLCJpYXQiOjE3MzU0NjY2MjAsImp0aSI6IjYxZjVkNDQ0MTVkNzQ3ZjM4ODFhYWMzMmMzZDk0ZGM4IiwidXNlcl9pZCI6MTQsInJvbGUiOiJpbmZpcm1pZXIifQ.-tV-Dd9atPS9VqTVE0hTZ_dg6p-O7APws84yGcRwY-w
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NTU5NDY4LCJpYXQiOjE3MzU1NTU4NjgsImp0aSI6IjM0MTFkM2ZhNTZiZjQzN2ZhYzM5YWU1MGIxMWQ5YTkzIiwidXNlcl9pZCI6NCwicm9sZSI6ImluZmlybWllciJ9.hc80MxgSy9lFuOGefUBi7sljqQIok-aR2dGKhBvDLYw
 Content-Type: application/json
 
 {
   "soin_infirmier":"i",
   "observation_patient":"this is observation",
-  "dpi":7,
+  "dpi":1,
   "admin_medicament_input":{
     "advice":"this is advice how to take medicament"
   }
@@ -25,20 +25,20 @@ Content-Type: application/json
 ###
 # -------------------- create dpi -----------------
 POST http://127.0.0.1:8000/app/dpi/add/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1MzI5NTg3LCJpYXQiOjE3MzUzMjkyODcsImp0aSI6IjNmMTU2Y2U5YjlhNzQ4NjM4N2ZlNDQwZmY0MjhhMjI5IiwidXNlcl9pZCI6MSwicm9sZSI6ImFkbWluIn0.1CiVRx6VgqxeImitFIn-o11BvUPvmmmKhIeat5nxzeM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NTU5MDI1LCJpYXQiOjE3MzU1NTU0MjUsImp0aSI6IjBlNDQ2ODZmMDhmMjQyMDRiNzNkYTQ2ZGY0NmI2YmYwIiwidXNlcl9pZCI6MSwicm9sZSI6ImFkbWluIn0.vH0xQZs5bAHlGcROcL-IKVq6aJTk06imT6CjIQ7S1-s
 Content-Type: application/json
 
 {
     "first_name": "patient",
     "last_name": "patient",
-    "email": "patient36@gmail.com",
+    "email": "patient@gmail.com",
     "password": "bndbndbnd",
     "password2": "bndbndbnd",
     "phone": "bnd",
     "adresse": "bnd",
     "role": "patient",
     "dpi_input": {
-        "nss": "patient36_nss",
+        "nss": "patient_nss",
         "mutuelle": "HealthCare",
         "contact_info": "contact@example.com",
         "medecin_traitant_email": "medecin@gmail.com"
@@ -48,25 +48,25 @@ Content-Type: application/json
 ###
 # ---------------- register new user (not dpi) -----
 POST http://127.0.0.1:8000/app/users/add/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1MzI5NTg3LCJpYXQiOjE3MzUzMjkyODcsImp0aSI6IjNmMTU2Y2U5YjlhNzQ4NjM4N2ZlNDQwZmY0MjhhMjI5IiwidXNlcl9pZCI6MSwicm9sZSI6ImFkbWluIn0.1CiVRx6VgqxeImitFIn-o11BvUPvmmmKhIeat5nxzeM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NTU5MDI1LCJpYXQiOjE3MzU1NTU0MjUsImp0aSI6IjBlNDQ2ODZmMDhmMjQyMDRiNzNkYTQ2ZGY0NmI2YmYwIiwidXNlcl9pZCI6MSwicm9sZSI6ImFkbWluIn0.vH0xQZs5bAHlGcROcL-IKVq6aJTk06imT6CjIQ7S1-s
 Content-Type: application/json
 
 {
     "first_name":"medecin",
     "last_name":"medecin",
-    "email":"medecin2@gmail.com",
+    "email":"infirmier@gmail.com",
     "password":"bndbndbnd",
     "password2":"bndbndbnd",
     "phone":"bnd",
     "adresse":"bnd",
-    "role":"medecin"
+    "role":"infirmier"
 }
 
 ###---------------------------------------------------------------------------------------------------
 
 #-----------------create diagnostic---------------
 POST http://127.0.0.1:8000/app/create_diagnostic/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NDYzNDMzLCJpYXQiOjE3MzU0NjMxMzMsImp0aSI6IjgwODYxMjVhODgwNDRmNjRiOWQzNTY0OGZlZDcyMTkyIiwidXNlcl9pZCI6NCwicm9sZSI6Im1lZGVjaW4ifQ.ZglyRVvp5vtSDXx7wBkRaSYzKJKDUvsN8WsebMxLkwY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NTU5NDY4LCJpYXQiOjE3MzU1NTU4NjgsImp0aSI6IjM0MTFkM2ZhNTZiZjQzN2ZhYzM5YWU1MGIxMWQ5YTkzIiwidXNlcl9pZCI6NCwicm9sZSI6ImluZmlybWllciJ9.hc80MxgSy9lFuOGefUBi7sljqQIok-aR2dGKhBvDLYw
 Content-Type: application/json
 
 {
@@ -87,7 +87,7 @@ Content-Type: application/json
 ###
 #-----------------add diagnostic description---------------
 POST http://127.0.0.1:8000/app/add_diagnostic/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NDYzODQxLCJpYXQiOjE3MzU0NjM1NDEsImp0aSI6IjQwZTc5NGRhY2U5ZDRjZTU4MjM3NWIzYWJiMzNhNzQzIiwidXNlcl9pZCI6NCwicm9sZSI6Im1lZGVjaW4ifQ.kd2MaLp9rLaxK3r-_filfi5vUzGlL7IQU72W53uebxI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NTU5NDY4LCJpYXQiOjE3MzU1NTU4NjgsImp0aSI6IjM0MTFkM2ZhNTZiZjQzN2ZhYzM5YWU1MGIxMWQ5YTkzIiwidXNlcl9pZCI6NCwicm9sZSI6ImluZmlybWllciJ9.hc80MxgSy9lFuOGefUBi7sljqQIok-aR2dGKhBvDLYw
 Content-Type: application/json
 
 {
@@ -98,11 +98,11 @@ Content-Type: application/json
 ###
 #-----------------add examen complementaire---------------
 POST http://127.0.0.1:8000/app/add_examen_comp/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NDY0Mzk1LCJpYXQiOjE3MzU0NjQwOTUsImp0aSI6IjJmM2U2OTA5M2JkNDQ4ZThiYzUxN2Y1OWZiODBkOTdiIiwidXNlcl9pZCI6NCwicm9sZSI6Im1lZGVjaW4ifQ.catza7ZjAg7NcYy_JljUol_mrfLjGm-uODo-DK7RMQw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NTU5NDY4LCJpYXQiOjE3MzU1NTU4NjgsImp0aSI6IjM0MTFkM2ZhNTZiZjQzN2ZhYzM5YWU1MGIxMWQ5YTkzIiwidXNlcl9pZCI6NCwicm9sZSI6ImluZmlybWllciJ9.hc80MxgSy9lFuOGefUBi7sljqQIok-aR2dGKhBvDLYw
 Content-Type: application/json
 
 {
-    "diagnostic": 5,
+    "diagnostic": 1,
     "description": "this is a examen complementaire 2"
 }
 
@@ -327,7 +327,7 @@ Content-Type: application/json
 ###
 # ---------------- list dpis -------------------
 GET http://127.0.0.1:8000/app/dpi/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NDc0MzUyLCJpYXQiOjE3MzU0NzA3NTIsImp0aSI6IjVkYWU3YzU0NTZjODQ2M2ZiZDRlNGZiNTcyZTk5ZjYzIiwidXNlcl9pZCI6MTQsInJvbGUiOiJpbmZpcm1pZXIifQ.dgo0U-MoPCen4jkF2FfteIZwEnKhZBT5lhyA9amXUig
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NTU5NDY4LCJpYXQiOjE3MzU1NTU4NjgsImp0aSI6IjM0MTFkM2ZhNTZiZjQzN2ZhYzM5YWU1MGIxMWQ5YTkzIiwidXNlcl9pZCI6NCwicm9sZSI6ImluZmlybWllciJ9.hc80MxgSy9lFuOGefUBi7sljqQIok-aR2dGKhBvDLYw
 Content-Type: application/json
 
 ###
@@ -338,12 +338,18 @@ Content-Type: application/json
 
 ###
 # ---------------- get specific dpi -------------------
-GET http://127.0.0.1:8000/app/dpi/28/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NDcwMjIwLCJpYXQiOjE3MzU0NjY2MjAsImp0aSI6IjYxZjVkNDQ0MTVkNzQ3ZjM4ODFhYWMzMmMzZDk0ZGM4IiwidXNlcl9pZCI6MTQsInJvbGUiOiJpbmZpcm1pZXIifQ.-tV-Dd9atPS9VqTVE0hTZ_dg6p-O7APws84yGcRwY-w
+GET http://127.0.0.1:8000/app/dpi/1/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NTU5NDY4LCJpYXQiOjE3MzU1NTU4NjgsImp0aSI6IjM0MTFkM2ZhNTZiZjQzN2ZhYzM5YWU1MGIxMWQ5YTkzIiwidXNlcl9pZCI6NCwicm9sZSI6ImluZmlybWllciJ9.hc80MxgSy9lFuOGefUBi7sljqQIok-aR2dGKhBvDLYw
 Content-Type: application/json
 
 ###
 # ---------------- get specific soin -------------------
 GET http://127.0.0.1:8000/app/soins/1/
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NDc1MjE4LCJpYXQiOjE3MzU0NzE2MTgsImp0aSI6ImRlZTgwZjRlZDY5NTRlYjI5ZjNhYjk0NTA0NTNjMTA2IiwidXNlcl9pZCI6MTQsInJvbGUiOiJpbmZpcm1pZXIifQ.fYDWWmPukb5cP2oHdWopCqSEUaZtS_GPX0bbQkiuAkc
+Content-Type: application/json
+
+###
+# -------------------- search dpi -----------------
+GET http://127.0.0.1:8000/app/dpi/search/?ns=patient_nss
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NTYwODc5LCJpYXQiOjE3MzU1NTcyNzksImp0aSI6IjMyMjU0MDA1NWY1ZjRmZGI5MDE4MTA3NDI4ZjZjYjdkIiwidXNlcl9pZCI6NCwicm9sZSI6ImluZmlybWllciJ9.So4E7tMWSrfp0BDlWdmdanesnBaHH5rKlR-1GiU7LUw
 Content-Type: application/json
