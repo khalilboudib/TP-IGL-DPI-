@@ -91,6 +91,7 @@ class Consultation(models.Model):
     id_consultation = models.AutoField(primary_key=True)
     diagnostic = models.ForeignKey(Diagnostic, on_delete=models.SET_NULL, null=True, related_name="consultations")
     date_consultation = models.DateTimeField(default=datetime.now)
+    medecin = models.ForeignKey("app.Medecin", on_delete=models.SET_NULL, null=True, related_name="consultations")
 
 class Examen_Consultation(models.Model):
     id_examen_consultation = models.AutoField(primary_key=True)
@@ -102,7 +103,7 @@ class Bilan_Biologique(models.Model):
     id_bilan_biologique = models.AutoField(primary_key=True)
     date_bilan = models.DateTimeField(default=datetime.now)
     examen_complementaire = models.OneToOneField("app.Examen_Complementaire", on_delete=models.SET_NULL, null=True, related_name="bilan_biologique")
-    #laboratoire = models.OneToOneField("app.Laboratoire", on_delete=models.SET_NULL, null=True)
+    laboratoire = models.ForeignKey("app.Laboratoire", on_delete=models.SET_NULL, null=True, related_name="bilans_biologiques")
 
 class Resultat_Biologique(models.Model):
     id_resultat = models.AutoField(primary_key=True)
@@ -124,9 +125,10 @@ class Bilan_Radiologique(models.Model):
 class Examen_Radiologique(models.Model):
     id_examen = models.AutoField(primary_key=True)
     date_examen = models.DateTimeField(default=datetime.now)
-    #Radiologue = models.OneToOneField("app.Radiologue", on_delete=models.SET_NULL, null=True)
+    Radiologue = models.ForeignKey("app.Radiologue", on_delete=models.SET_NULL, null=True,related_name="examens_radiologiques")
     TypeRadio = models.TextField(choices=TypeRadio.choices)
     bilan_radiologique = models.ForeignKey(Bilan_Radiologique, on_delete=models.SET_NULL, null=True, related_name="examen_radiologiques")
+    compte_rendu = models.ForeignKey("app.Compte_Rendu", on_delete=models.SET_NULL, null=True, related_name="examen_radiologiques")
 
 class Examen_Complementaire(models.Model):
     id_examen_complementaire = models.AutoField(primary_key=True)
@@ -137,14 +139,13 @@ class Compte_Rendu(models.Model):
     id_compte_rendu = models.AutoField(primary_key=True)
     dpi = models.ForeignKey("app.dpi", on_delete=models.SET_NULL, null=True, related_name="compte_rendus")
     date_creation = models.DateTimeField(default=datetime.now)
-    radiologue = models.OneToOneField("app.Radiologue", on_delete=models.SET_NULL, null=True)
+    radiologue = models.ForeignKey("app.Radiologue", on_delete=models.SET_NULL, null=True, related_name="compte_rendus")
     texte = models.TextField()
-    examen_Radiologique = models.OneToOneField(Examen_Radiologique, on_delete=models.SET_NULL, null=True)
 
 class CertificatMedical(models.Model):
     id_certificat = models.AutoField(primary_key=True)
     dpi = models.ForeignKey("app.dpi", on_delete=models.SET_NULL, null=True, related_name="certificats")
-    medecin = models.OneToOneField("app.Medecin", on_delete=models.SET_NULL, null=True)
+    medecin = models.ForeignKey("app.Medecin", on_delete=models.SET_NULL, null=True, related_name="certificats")
     date_emission = models.DateTimeField()
     date_debut_validite = models.DateField()
     date_fin_validite = models.DateField()
@@ -161,7 +162,7 @@ class Decompte_des_frais(models.Model):
     montant_total = models.FloatField()
     montant_rembourse = models.FloatField()
     montant_a_payer = models.FloatField()
-    admin = models.OneToOneField("app.admin", on_delete=models.SET_NULL, null=True)
+    admin = models.ForeignKey("app.admin", on_delete=models.SET_NULL, null=True, related_name="decomptes")
     hospitalisation = models.ForeignKey("app.Hospitalisation", on_delete=models.SET_NULL, null=True, related_name="decompte")
 
 class Hospitalisation(models.Model):

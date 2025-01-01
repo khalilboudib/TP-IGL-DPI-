@@ -3,10 +3,15 @@ from django.urls import path
 from app.views import authentication
 from app.views.login import CustomTokenObtainPairView
 from app.views.admin import AdminView
+from app.views.users import RegisterView, ListUsersView
+from app.views.dpi import AddDPIView, ListDPIsView
+from app.views.soins import AddSoinView, ListSoinsView
+from app.views.dpi import AddDPIView
+from app.views.soins import AddSoinView
+from app.views import DiagnosticControler, ConsultationControler, OrdananceControler, ExamenCompControler, Compte_renduControler, CertificatMedicalControler
 from app.views.users import *
 from app.views.dpi import *
 from app.views.soins import *
-from app.views import DiagnosticControler, ConsultationControler, OrdananceControler, ExamenCompControler
 
 urlpatterns = [
     path('POST/', authentication.index_POST, name='index_POST'),
@@ -34,17 +39,51 @@ urlpatterns = [
     path('add_examen_comp/', ExamenCompControler.ajout_ExamenComplementaire , name="add_examen_comp"),
     path('add_examen_radio/', ExamenCompControler.ajout_examen_radiologique, name="bilan_bio"),
     path('add_resultat_radio/', ExamenCompControler.ajout_resultat_radiologique, name="resultat_radio"),
+    path('add_compte_rendu/', Compte_renduControler.crea_compte_rendu, name="add_compte_rendu"),
+    path('consultations/add_examen_consultation/', ConsultationControler.ajout_examen_consultation, name="add_examen_consultation"),
+    path('create_certificat/', CertificatMedicalControler.crea_certificat, name="create_certificat_medical"),
     path('examen_comp/', ExamenCompControler.ExamenComplementaireListView.as_view(), name="examen_comp"),
+    path('examen_comp/delete/', ExamenCompControler.ExamenComplementaireListView.as_view(), name="examen_comp"),
+    path('examen_comp/modify/', ExamenCompControler.ExamenComplementaireListView.as_view(), name="examen_comp"),
     path('diagnostics/', DiagnosticControler.DiagnosticListView.as_view(), name="diagnostics"),
+    path('diagnostics/delete/', DiagnosticControler.DiagnosticListView.as_view(), name="diagnostics"),
+    path('diagnostics/modify/', DiagnosticControler.DiagnosticListView.as_view(), name="diagnostics"),
     path('consultations/', ConsultationControler.ConsultationListView.as_view(), name="consultations"),
+    path('consultations/delete/', ConsultationControler.ConsultationListView.as_view(), name="consultations"),
+    path('consultations/modify/', ConsultationControler.ConsultationListView.as_view(), name="consultations"),
     path('resumes/', ConsultationControler.ResumeListView.as_view(), name="resumes"),
+    path('resumes/delete', ConsultationControler.ResumeListView.as_view(), name="resumes"),
+    path('resumes/modify', ConsultationControler.ResumeListView.as_view(), name="resumes"),
     path('ordanances/', OrdananceControler.OrdananceListView.as_view(), name="ordanances"),
+    path('ordanances/delete/', OrdananceControler.OrdananceListView.as_view(), name="ordanances"),
+    path('ordanances/modify/', OrdananceControler.OrdananceListView.as_view(), name="ordanances"),
     path('medicaments/', OrdananceControler.MedicamentListView.as_view(), name="medicaments"),
+    path('medicaments/delete/', OrdananceControler.MedicamentListView.as_view(), name="medicaments"),
+    path('medicaments/modify/', OrdananceControler.MedicamentListView.as_view(), name="medicaments"),
     path('bilan_bio/', ExamenCompControler.BilanBiologiqueListView.as_view(), name="bilan_bio"),
+    path('bilan_bio/delete/', ExamenCompControler.BilanBiologiqueListView.as_view(), name="bilan_bio"),
+    path('bilan_bio/modify/', ExamenCompControler.BilanBiologiqueListView.as_view(), name="bilan_bio"),
     path('bilan_radio/', ExamenCompControler.BilanRadiologiqueListView.as_view(), name="bilan_radio"),
+    path('bilan_radio/delete/', ExamenCompControler.BilanRadiologiqueListView.as_view(), name="bilan_radio"),
+    path('bilan_radio/modify/', ExamenCompControler.BilanRadiologiqueListView.as_view(), name="bilan_radio"),
     path('resultats_bio/', ExamenCompControler.ResultatBiologiqueListView.as_view(), name="resultats_bio"),
+    path('resultats_bio/delete/', ExamenCompControler.ResultatBiologiqueListView.as_view(), name="resultats_bio"),
+    path('resultats_bio/modify/', ExamenCompControler.ResultatBiologiqueListView.as_view(), name="resultats_bio"),
     path('resultats_radio/', ExamenCompControler.ResultatRadiologiqueListView.as_view(), name="resultats_radio"),
+    path('resultats_radio/delete/', ExamenCompControler.ResultatRadiologiqueListView.as_view(), name="resultats_radio"),
+    path('resultats_radio/modify/', ExamenCompControler.ResultatRadiologiqueListView.as_view(), name="resultats_radio"),
     path('examens_radio/', ExamenCompControler.ExamenRadiologiqueListView.as_view(), name="examens_radio"),
+    path('examens_radio/delete/', ExamenCompControler.ExamenRadiologiqueListView.as_view(), name="examens_radio"),
+    path('examens_radio/modify/', ExamenCompControler.ExamenRadiologiqueListView.as_view(), name="examens_radio"),
+    path('examen_consultation/', ConsultationControler.ExamenConsultationListView.as_view(), name="examen_consultation"),
+    path('examen_consultation/delete/', ConsultationControler.ExamenConsultationListView.as_view(), name="examen_consultation"),
+    path('examen_consultation/modify/', ConsultationControler.ExamenConsultationListView.as_view(), name="examen_consultation"),
+    path('compte_rendu/', Compte_renduControler.Compte_RenduListView.as_view(), name="compte_rendu"),
+    path('compte_rendu/delete/', Compte_renduControler.Compte_RenduListView.as_view(), name="compte_rendu"),
+    path('compte_rendu/modify/', Compte_renduControler.Compte_RenduListView.as_view(), name="compte_rendu"),
+    path('certificat/', CertificatMedicalControler.CertificatMedicalListView.as_view(), name="certificat"),
+    path('certificat/delete/', CertificatMedicalControler.CertificatMedicalListView.as_view(), name="certificat"),
+    path('certificat/modify/', CertificatMedicalControler.CertificatMedicalListView.as_view(), name="certificat"),
     path('users/<int:pk>/', GetUserView.as_view(), name="get_user"),
     path('dpi/<int:pk>/', GetDPIView.as_view(), name="get_dpi"),
     path('soins/<int:pk>/', GetSoinView.as_view(), name="get_soin"),
