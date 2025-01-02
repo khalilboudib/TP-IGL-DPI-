@@ -30,6 +30,10 @@ export class DpiService {
     return this.http.get<DPI[]>(this.apiUrl);
   }
 
+  getDpiById(id: string): Observable<any> {
+    return this.http.get<DPI>(`${this.apiUrl}/${id}`);
+  }
+
   // Add a new DPI
   addDpi(dpi: DPI): Observable<DPI> {
     return this.http.post<DPI>(this.apiUrl, dpi);

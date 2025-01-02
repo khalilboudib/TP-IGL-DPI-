@@ -60,8 +60,6 @@ export class DpiListComponent implements OnInit {
     }
   }
 
-
-
   searchByNSS(nss: string): void {
     const dpi = this.dpis.find((dpi) => dpi.patient?.NSS === nss);
     if (dpi) {
@@ -91,13 +89,15 @@ export class DpiListComponent implements OnInit {
   }
 
   viewDpiDetails(dpiId: string): void {
-    const dpi = this.dpis.find((dpi) => dpi.id_dpi === dpiId);
-    if (dpi) {
-      this.selectedDpi = dpi;
-      this.showModal = true; // Show the modal
-    } else {
-      alert('No DPI found with this NSS');
-    }
+    // const dpi = this.dpis.find((dpi) => dpi.id_dpi === dpiId);
+    // if (dpi) {
+    //   this.selectedDpi = dpi;
+    //   this.showModal = true; // Show the modal
+    // } else {
+    //   alert('No DPI found with this NSS');
+    // }
+
+      this.router.navigate(['/dpi-detail', dpiId]);
   }
 
   createNewDpi(): void {
